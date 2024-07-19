@@ -1,0 +1,58 @@
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+mono_crash.*
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.BIN/
+.vscode/
+*.bak
+*.tmp
+*.temp
+# Ignoriere typische Systemdateien
+*.log
+*.dat
+.bash_history
+
+# Ignoriere system-spezifische Verzeichnisse
+/AppData/
+/Contacts/
+/Downloads/
+/Favorites/
+/Links/
+/Music/
+/Pictures/
+/Saved Games/
+/Searches/
+/Videos/
+
+# Andere zu ignorierende Dateien und Verzeichnisse
+*.lnk
+/3D Objects/
+/Cookies/
+/Recent/
+/Netzwerkumgebung/
+/Anwendungsdaten/
+/Druckumgebung/
+/Eigene Dateien/
+/Lokale Einstellungen/
+/SendTo/
+/Startmenü/
+/Vorlagen/
+/IntelGraphicsProfiles/
