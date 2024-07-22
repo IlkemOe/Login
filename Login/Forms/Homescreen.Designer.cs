@@ -41,6 +41,7 @@
             this.dg = new System.Windows.Forms.DataGridView();
             this.npgsqlDataAdapter1 = new Npgsql.NpgsqlDataAdapter();
             this.ButtonSpeichern = new System.Windows.Forms.Button();
+            this.ButtonNeu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -173,12 +174,29 @@
             this.ButtonSpeichern.Visible = false;
             this.ButtonSpeichern.Click += new System.EventHandler(this.ButtonSpeichern_Click);
             // 
+            // ButtonNeu
+            // 
+            this.ButtonNeu.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonNeu.FlatAppearance.BorderSize = 0;
+            this.ButtonNeu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonNeu.Font = new System.Drawing.Font("Roboto", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonNeu.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.ButtonNeu.Location = new System.Drawing.Point(64, 70);
+            this.ButtonNeu.Name = "ButtonNeu";
+            this.ButtonNeu.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.ButtonNeu.Size = new System.Drawing.Size(65, 27);
+            this.ButtonNeu.TabIndex = 10;
+            this.ButtonNeu.Text = "Neu";
+            this.ButtonNeu.UseVisualStyleBackColor = false;
+            this.ButtonNeu.Visible = false;
+            // 
             // Homescreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(732, 450);
+            this.Controls.Add(this.ButtonNeu);
             this.Controls.Add(this.ButtonSpeichern);
             this.Controls.Add(this.dg);
             this.Controls.Add(this.LabelStatus);
@@ -213,5 +231,6 @@
         private System.Windows.Forms.DataGridView dg;
         private Npgsql.NpgsqlDataAdapter npgsqlDataAdapter1;
         private System.Windows.Forms.Button ButtonSpeichern;
+        private System.Windows.Forms.Button ButtonNeu;
     }
 }

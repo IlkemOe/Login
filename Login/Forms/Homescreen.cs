@@ -42,8 +42,8 @@ namespace Login
             ButtonLogout.BackColor = Farben.Iron;
             ButtonLogout.ForeColor = Farben.DeepSky;
             ButtonBenutzerliste.BackColor = Farben.Surfie;
-            ButtonSpeichern.BackColor = Farben.Iron;
-            ButtonSpeichern.ForeColor = Farben.DeepSky;
+            ButtonSpeichern.BackColor = Farben.Surfie;
+            ButtonNeu.ForeColor = Farben.Surfie;
         }
         string vStrConnection = "Server=localhost; port=3169 ; user id=postgres ; password=Passwort1!; Database=Datenbank;";
 
@@ -128,14 +128,14 @@ namespace Login
             {
                 dg.Visible = true;
                 ButtonSpeichern.Visible = true;
-                //dg.EditMode = DataGridViewEditMode.EditOnEnter;
+                ButtonBenutzerliste.Visible = false;
                 DataTable dtgetdata = getdata("SELECT * FROM benutzerTabelle;");
                 dg.DataSource = dtgetdata;
-
-                // Optional: Konfiguration des DataGridView für die Bearbeitung
                 dg.ReadOnly = false;
                 dg.AllowUserToAddRows = true;
                 dg.AllowUserToDeleteRows = true;
+                dg.EditMode = DataGridViewEditMode.EditOnEnter;
+                ButtonNeu.Visible = true;
             }
             else
             {

@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\login\\forms\\homescreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|solutionrelative:login\\forms\\homescreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\login\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|solutionrelative:login\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\login\\forms\\homescreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|solutionrelative:login\\forms\\homescreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\login\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|solutionrelative:login\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|c:\\users\\i.oezsevim\\desktop\\projekte\\repository\\login\\login\\forms\\homescreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|solutionrelative:login\\forms\\homescreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\login\\forms\\registrierungform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|solutionrelative:login\\forms\\registrierungform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\login\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|solutionrelative:login\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|c:\\users\\i.oezsevim\\desktop\\projekte\\repository\\login\\login\\forms\\registrierungform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\login\\forms\\registrierungform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|solutionrelative:login\\forms\\registrierungform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|c:\\users\\i.oezsevim\\desktop\\projekte\\repository\\login\\login\\forms\\registrierungform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|solutionrelative:login\\forms\\registrierungform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\login\\forms\\passwortzur\u00FCcksetzen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,7 +35,7 @@
       "RelativeMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|solutionrelative:login\\forms\\passwortzur\u00FCcksetzen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|c:\\users\\i.oezsevim\\desktop\\projekte\\repository\\login\\login\\datenbankservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\login\\datenbankservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|solutionrelative:login\\datenbankservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -55,15 +55,15 @@
       "RelativeMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|solutionrelative:login\\forms\\passwortvergessenform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|c:\\users\\i.oezsevim\\desktop\\projekte\\repository\\login\\login\\registrierung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\login\\registrierung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|solutionrelative:login\\registrierung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|c:\\users\\i.oezsevim\\desktop\\projekte\\repository\\login\\login\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\login\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|solutionrelative:login\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|c:\\users\\i.oezsevim\\desktop\\projekte\\repository\\login\\login\\benutzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\login\\benutzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4F79E00E-2E8F-4498-B082-33A9B19737EC}|Login\\Login.csproj|solutionrelative:login\\benutzer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -78,7 +78,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "RegistrierungForm.cs",
               "DocumentMoniker": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\RegistrierungForm.cs",
               "RelativeDocumentMoniker": "Login\\Forms\\RegistrierungForm.cs",
@@ -91,7 +91,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "RegistrierungForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\RegistrierungForm.cs",
               "RelativeDocumentMoniker": "Login\\Forms\\RegistrierungForm.cs",
@@ -109,64 +109,14 @@
               "RelativeDocumentMoniker": "Login\\Forms\\Homescreen.cs",
               "ToolTip": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\Homescreen.cs",
               "RelativeToolTip": "Login\\Forms\\Homescreen.cs",
-              "ViewState": "AQIAANcAAAAAAAAAAAAiwPAAAAARAAAA",
+              "ViewState": "AQIAAKIAAAAAAAAAAAASwJkAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-18T10:57:27.067Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PasswortZur\u00FCcksetzen.cs [Entwurf]",
-              "DocumentMoniker": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\PasswortZur\u00FCcksetzen.cs",
-              "RelativeDocumentMoniker": "Login\\Forms\\PasswortZur\u00FCcksetzen.cs",
-              "ToolTip": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\PasswortZur\u00FCcksetzen.cs [Entwurf]",
-              "RelativeToolTip": "Login\\Forms\\PasswortZur\u00FCcksetzen.cs [Entwurf]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-18T13:34:08.284Z",
-              "EditorCaption": " [Entwurf]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PasswortZur\u00FCcksetzen.cs",
-              "DocumentMoniker": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\PasswortZur\u00FCcksetzen.cs",
-              "RelativeDocumentMoniker": "Login\\Forms\\PasswortZur\u00FCcksetzen.cs",
-              "ToolTip": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\PasswortZur\u00FCcksetzen.cs",
-              "RelativeToolTip": "Login\\Forms\\PasswortZur\u00FCcksetzen.cs",
-              "ViewState": "AQIAAKcAAAAAAAAAAADwv6sAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-18T13:34:10.575Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "LoginForm.cs [Entwurf]",
-              "DocumentMoniker": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\LoginForm.cs",
-              "RelativeDocumentMoniker": "Login\\Forms\\LoginForm.cs",
-              "ToolTip": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\LoginForm.cs [Entwurf]",
-              "RelativeToolTip": "Login\\Forms\\LoginForm.cs [Entwurf]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-18T09:49:32.465Z",
-              "EditorCaption": " [Entwurf]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "LoginForm.cs",
-              "DocumentMoniker": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\LoginForm.cs",
-              "RelativeDocumentMoniker": "Login\\Forms\\LoginForm.cs",
-              "ToolTip": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\LoginForm.cs",
-              "RelativeToolTip": "Login\\Forms\\LoginForm.cs",
-              "ViewState": "AQIAAIAAAAAAAAAAAAAkwI8AAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-18T09:50:44.093Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Homescreen.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\Homescreen.cs",
               "RelativeDocumentMoniker": "Login\\Forms\\Homescreen.cs",
@@ -178,6 +128,54 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PasswortZur\u00FCcksetzen.cs [Entwurf]",
+              "DocumentMoniker": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\PasswortZur\u00FCcksetzen.cs",
+              "RelativeDocumentMoniker": "Login\\Forms\\PasswortZur\u00FCcksetzen.cs",
+              "ToolTip": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\PasswortZur\u00FCcksetzen.cs [Entwurf]",
+              "RelativeToolTip": "Login\\Forms\\PasswortZur\u00FCcksetzen.cs [Entwurf]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-18T13:34:08.284Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PasswortZur\u00FCcksetzen.cs",
+              "DocumentMoniker": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\PasswortZur\u00FCcksetzen.cs",
+              "RelativeDocumentMoniker": "Login\\Forms\\PasswortZur\u00FCcksetzen.cs",
+              "ToolTip": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\PasswortZur\u00FCcksetzen.cs",
+              "RelativeToolTip": "Login\\Forms\\PasswortZur\u00FCcksetzen.cs",
+              "ViewState": "AQIAAKcAAAAAAAAAAADwv6sAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-18T13:34:10.575Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoginForm.cs [Entwurf]",
+              "DocumentMoniker": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Login\\Forms\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\LoginForm.cs [Entwurf]",
+              "RelativeToolTip": "Login\\Forms\\LoginForm.cs [Entwurf]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-18T09:49:32.465Z",
+              "EditorCaption": " [Entwurf]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Login\\Forms\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\LoginForm.cs",
+              "RelativeToolTip": "Login\\Forms\\LoginForm.cs",
+              "ViewState": "AQIAAKkAAAAAAAAAAAAswI8AAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-18T09:50:44.093Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 10,
               "Title": "SicherheitsabfrageF\u00FCrPW.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\SicherheitsabfrageF\u00FCrPW.cs",
@@ -185,8 +183,7 @@
               "ToolTip": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\SicherheitsabfrageF\u00FCrPW.cs [Entwurf]",
               "RelativeToolTip": "Login\\Forms\\SicherheitsabfrageF\u00FCrPW.cs [Entwurf]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-18T13:30:03.801Z",
-              "EditorCaption": " [Entwurf]"
+              "WhenOpened": "2024-07-18T13:30:03.801Z"
             },
             {
               "$type": "Document",
@@ -198,8 +195,7 @@
               "RelativeToolTip": "Login\\Forms\\PasswortVergessenForm.cs",
               "ViewState": "AQIAADAAAAAAAAAAAAAAwCwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-18T10:59:02.548Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-18T10:59:02.548Z"
             },
             {
               "$type": "Document",
@@ -211,8 +207,7 @@
               "RelativeToolTip": "Login\\Forms\\SicherheitsabfrageF\u00FCrPW.cs",
               "ViewState": "AQIAABwAAAAAAAAAAAAAwI8AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-18T13:30:06.047Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-18T13:30:06.047Z"
             },
             {
               "$type": "Document",
@@ -224,8 +219,7 @@
               "RelativeToolTip": "Login\\DatenbankService.cs",
               "ViewState": "AQIAAAUAAAAAAAAAAAAQwCMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-18T13:55:30.736Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-18T13:55:30.736Z"
             },
             {
               "$type": "Document",
@@ -236,8 +230,7 @@
               "ToolTip": "C:\\Users\\i.oezsevim\\Desktop\\Projekte\\Repository\\Login\\Login\\Forms\\PasswortVergessenForm.cs [Entwurf]",
               "RelativeToolTip": "Login\\Forms\\PasswortVergessenForm.cs [Entwurf]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-18T10:58:58.173Z",
-              "EditorCaption": " [Entwurf]"
+              "WhenOpened": "2024-07-18T10:58:58.173Z"
             },
             {
               "$type": "Document",
@@ -249,8 +242,7 @@
               "RelativeToolTip": "Login\\Registrierung.cs",
               "ViewState": "AQIAAK4AAAAAAAAAAAAiwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-22T05:49:40.788Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-22T05:49:40.788Z"
             },
             {
               "$type": "Document",
@@ -262,8 +254,7 @@
               "RelativeToolTip": "Login\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-22T05:49:37.64Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-22T05:49:37.64Z"
             },
             {
               "$type": "Document",
@@ -275,8 +266,7 @@
               "RelativeToolTip": "Login\\Benutzer.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-22T05:49:34.398Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-22T05:49:34.398Z"
             }
           ]
         }
