@@ -1,35 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.Windows.Forms;
 using Npgsql;
 
-namespace Login
+public class DatenbankService
 {
-    public class DatenbankService
-    {
-        private string vStrConnection = "Server=localhost;Port=3169;User Id=postgres;Password=Passwort1!;Database=Datenbank;";
+    private string vStrConnection = "Server=localhost;Port=3169;User Id=postgres;Password=Passwort1!;Database=Datenbank;";
 
-        public bool UpdatePassword(string email, string username, string newPassword)
+    public bool UpdatePassword(string email, string benutzername, string neuesPasswort)
+    {
+        using (var conn = new NpgsqlConnection(vStrConnection))
         {
-            using (var conn = new NpgsqlConnection(vStrConnection))
+            try
             {
                 conn.Open();
 
-                using (var cmd = new NpgsqlCommand("UPDATE BenutzerTabelle SET Passworthash = @newPassword WHERE Email = @Email AND Benutzername = @Username", conn))
+                using (var cmd = new NpgsqlCommand("UPDATE \"Benutzertabelle\" SET \"Passworthash\" = @neuesPasswort WHERE \"Email\" = @Email AND \"Benutzername\" = @Benutzername", conn))
                 {
-                    cmd.Parameters.AddWithValue("newPassword", newPassword);
+                    cmd.Parameters.AddWithValue("neuesPasswort", neuesPasswort);
                     cmd.Parameters.AddWithValue("Email", email);
-                    cmd.Parameters.AddWithValue("Username", username);
+                    cmd.Parameters.AddWithValue("Benutzername", benutzername);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
 
                     return rowsAffected > 0;
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler beim Aktualisieren des Passworts: " + ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
     }
 }
-

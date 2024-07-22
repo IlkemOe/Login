@@ -222,7 +222,8 @@ namespace Login.Forms
                 try
                 {
                     vCon.Open();
-                    string sql = "INSERT INTO BenutzerTabelle (name, vorname, email, benutzername, passworthash, sicherheitsfrage, sicherheitsantwort, status, angemeldetbleiben) VALUES (@name, @vorname, @email, @benutzername, @passworthash, @sicherheitsfrage, @sicherheitsantwort, @status, @angemeldetbleiben)";
+                    string sql = @"INSERT INTO BenutzerTabelle (name, vorname, email, benutzername, passworthash, sicherheitsfrage, sicherheitsantwort, status, angemeldetbleiben) 
+                           VALUES (@name, @vorname, @email, @benutzername, @passworthash, @sicherheitsfrage, @sicherheitsantwort, @status, @angemeldetbleiben)";
                     using (NpgsqlCommand vCmd = new NpgsqlCommand(sql, vCon))
                     {
                         vCmd.Parameters.AddWithValue("@name", name);
@@ -242,10 +243,11 @@ namespace Login.Forms
                 catch (Exception ex)
                 {
                     Console.WriteLine("An error occurred: " + ex.Message);
+                    throw;
                 }
             }
         }
-            private void PictureboxFragezeichen_MouseHover(object sender, EventArgs e)
+        private void PictureboxFragezeichen_MouseHover(object sender, EventArgs e)
         {
             LabelSicherheitsfrageGrund.Visible = true;
             ButtonFragezeichen.BackColor = Farben.Illusion;

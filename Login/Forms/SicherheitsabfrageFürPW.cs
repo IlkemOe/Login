@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,7 @@ namespace Login
         private Benutzer _gefundenerBenutzer;
         private Registrierung _registrierung;
         private PasswortZurücksetzen _passwortZurücksetzen;
+        private string vStrConnection = "Server=localhost; port=3169 ; user id=postgres ; password=Passwort1!; Database=Datenbank;";
         public SicherheitsabfrageFürPW(Form previousForm, Benutzer benutzer)
         {
             this.BackColor = Farben.IceWhite;
@@ -34,8 +36,40 @@ namespace Login
             ButtonZurückPWV.ForeColor = Farben.DeepSky;
             ButtonÜberprüfen.BackColor = Farben.Surfie;
 
-            ComboboxSicherheitsfrageAuswählen.Items.Add(_gefundenerBenutzer.Sicherheitsfrage);
-            ComboboxSicherheitsfrageAuswählen.SelectedIndex = 0;
+            string sicherheitsfrage = GetSicherheitsfrage(benutzer.Email);
+            if (sicherheitsfrage != null)
+            {
+                ComboboxSicherheitsfrageAuswählen.Items.Add(_gefundenerBenutzer.Sicherheitsfrage);
+                ComboboxSicherheitsfrageAuswählen.SelectedIndex = 0;
+            }
+            else
+            {
+                MessageBox.Show("Fehler beim Abrufen der Sicherheitsfrage.", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
+        }
+
+        private string GetSicherheitsfrage(string email)
+        {
+            string sicherheitsfrage = null;
+            using (NpgsqlConnection vCon = new NpgsqlConnection(vStrConnection))
+            {
+                try
+                {
+                    vCon.Open();
+                    string sql = "SELECT sicherheitsfrage FROM benutzerTabelle WHERE email = @Email";
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(sql, vCon))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        sicherheitsfrage = cmd.ExecuteScalar()?.ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Fehler beim Abrufen der Sicherheitsfrage: " + ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            return sicherheitsfrage;
         }
 
         private void LabelFragezeichen_MouseHover(object sender, EventArgs e)
@@ -80,6 +114,35 @@ namespace Login
                 _passwortZurücksetzen.Show();
             }
         }
+
+        private bool ÜberprüfeSicherheitsantwort(string email, string frage, string antwort)
+        {
+            bool korrekt = false;
+            using (NpgsqlConnection vCon = new NpgsqlConnection(vStrConnection))
+            {
+                try
+                {
+                    vCon.Open();
+                    string sql = "SELECT sicherheitsantwort FROM benutzerTabelle WHERE email = @Email AND sicherheitsfrage = @Frage";
+                    using (NpgsqlCommand cmd = new NpgsqlCommand(sql, vCon))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        cmd.Parameters.AddWithValue("@Frage", frage);
+                        string gespeicherteAntwort = cmd.ExecuteScalar()?.ToString();
+                        if (gespeicherteAntwort != null && gespeicherteAntwort.Equals(antwort, StringComparison.OrdinalIgnoreCase))
+                        {
+                            korrekt = true;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Fehler bei der Überprüfung der Sicherheitsantwort: " + ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            return korrekt;
+        }
+
         private void Textbox_MouseHover(object sender, EventArgs e)
         {
             TextBox textBox = sender as TextBox;

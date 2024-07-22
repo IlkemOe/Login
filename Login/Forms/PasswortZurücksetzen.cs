@@ -20,7 +20,7 @@ namespace Login
         private Benutzer _benutzer;
         private Registrierung _registrierung;
         private LoginBildschirm _login;
-        private string vStrConnection = "Server=localhost;Port=3169;User Id=postgres;Password=Passwort1!;Database=Datenbank;";
+        private DatenbankService _dbService = new DatenbankService();
         public PasswortZurücksetzen(Form previousForm, Benutzer benutzer)
         {
             this.BackColor = Farben.IceWhite;
@@ -128,9 +128,8 @@ namespace Login
 
         private void ButtonBestätigenPWZ_Click(object sender, EventArgs e)
         {
-            string neuesPasswort = HashPasswort(TextboxPwZurücksetzen.Text);
-            DatenbankService dbService = new DatenbankService();
-            bool erfolg = dbService.UpdatePassword(_benutzer.Email, _benutzer.Benutzername, neuesPasswort);
+            string neuesPasswort = HashPasswort(TextboxPwZurücksetzen.Text);          
+            bool erfolg = _dbService.UpdatePassword(_benutzer.Email, _benutzer.Benutzername, neuesPasswort);
 
             if (erfolg)
             {
@@ -145,31 +144,31 @@ namespace Login
             }
         }
 
-        public void PasswortAktualisieren(string email, string benutzername, string neuesPasswort)
-        {
-            using (var conn = new NpgsqlConnection(vStrConnection))
-            {
-                conn.Open();
+        //public void PasswortAktualisieren(string email, string benutzername, string neuesPasswort)
+        //{
+        //    using (var conn = new NpgsqlConnection(vStrConnection))
+        //    {
+        //        conn.Open();
 
-                using (var cmd = new NpgsqlCommand("UPDATE \"Benutzertabelle\" SET \"Passworthash\" = @neuesPasswort WHERE \"Email\" = @Email AND \"Benutzername\" = @Username", conn))
-                {
-                    cmd.Parameters.AddWithValue("neuesPasswort", neuesPasswort);
-                    cmd.Parameters.AddWithValue("Email", email);
-                    cmd.Parameters.AddWithValue("Benutzername", benutzername);
+        //        using (var cmd = new NpgsqlCommand("UPDATE \"Benutzertabelle\" SET \"Passworthash\" = @neuesPasswort WHERE \"Email\" = @Email AND \"Benutzername\" = @Username", conn))
+        //        {
+        //            cmd.Parameters.AddWithValue("neuesPasswort", neuesPasswort);
+        //            cmd.Parameters.AddWithValue("Email", email);
+        //            cmd.Parameters.AddWithValue("Benutzername", benutzername);
 
-                    int rowsAffected = cmd.ExecuteNonQuery();
+        //            int rowsAffected = cmd.ExecuteNonQuery();
 
-                    if (rowsAffected > 0)
-                    {
-                        MessageBox.Show("Das Passwort wurde erfolgreich aktualisiert.", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Fehler beim Aktualisieren des Passworts.", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }
+        //            if (rowsAffected > 0)
+        //            {
+        //                MessageBox.Show("Das Passwort wurde erfolgreich aktualisiert.", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            }
+        //            else
+        //            {
+        //                MessageBox.Show("Fehler beim Aktualisieren des Passworts.", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            }
+        //        }
+        //    }
+        //}
     
 
 

@@ -46,19 +46,14 @@ namespace Login
             ButtonSpeichern.ForeColor = Farben.DeepSky;
         }
         string vStrConnection = "Server=localhost; port=3169 ; user id=postgres ; password=Passwort1!; Database=Datenbank;";
-        NpgsqlConnection vCon;
-        NpgsqlCommand vCmd;
+
         private void connection()
         {
-            vCon = new NpgsqlConnection();
-            vCon.ConnectionString = vStrConnection;
-
+            NpgsqlConnection vCon = new NpgsqlConnection(vStrConnection);
             if (vCon.State == ConnectionState.Closed)
             {
                 vCon.Open();
             }
-
-            vCon.Open();
         }
         public DataTable getdata(string sql)
         {
@@ -169,9 +164,13 @@ namespace Login
                     {
                         if (row.RowState == DataRowState.Added)
                         {
-                            // INSERT new record
-                            string sqlInsert = "INSERT INTO benutzerTabelle (name, vorname, email, benutzername, passworthash, sicherheitsfrage, sicherheitsantwort, status, angemeldetbleiben) " +
-                                               "VALUES (@name, @vorname, @email, @benutzername, @passworthash, @sicherheitsfrage, @sicherheitsantwort, @status, @angemeldetbleiben)";
+                            List<string> sqlInsertList = new List<string>
+                            {
+                                "INSERT INTO benutzerTabelle (name, vorname, email, benutzername, passworthash, sicherheitsfrage, sicherheitsantwort, status, angemeldetbleiben)",
+                                "VALUES (@name, @vorname, @email, @benutzername, @passworthash, @sicherheitsfrage, @sicherheitsantwort, @status, @angemeldetbleiben)"
+                            };
+
+                            string sqlInsert = string.Join(" ", sqlInsertList);
                             using (NpgsqlCommand cmdInsert = new NpgsqlCommand(sqlInsert, vCon))
                             {
                                 cmdInsert.Parameters.AddWithValue("@name", row["name"]);
@@ -189,18 +188,21 @@ namespace Login
                         }
                         else if (row.RowState == DataRowState.Modified)
                         {
-                            // UPDATE existing record
-                            string sqlUpdate = "UPDATE benutzerTabelle " +
-                                               "SET name = @name, " +
-                                                   "vorname = @vorname, " +
-                                                   "email = @email, " +
-                                                   "benutzername = @benutzername, " +
-                                                   "passworthash = @passworthash, " +
-                                                   "sicherheitsfrage = @sicherheitsfrage, " +
-                                                   "sicherheitsantwort = @sicherheitsantwort, " +
-                                                   "status = @status, " +
-                                                   "angemeldetbleiben = @angemeldetbleiben " +
-                                               "WHERE email = @original_email"; 
+                            List<string> sqlUpdateList = new List<string>
+                            {
+                                "UPDATE benutzerTabelle",
+                                "SET name = @name,",
+                                "vorname = @vorname,",
+                                "email = @email,",
+                                "benutzername = @benutzername,",
+                                "passworthash = @passworthash,",
+                                "sicherheitsfrage = @sicherheitsfrage,",
+                                "sicherheitsantwort = @sicherheitsantwort,",
+                                "status = @status,",
+                                "angemeldetbleiben = @angemeldetbleiben",
+                                "WHERE email = @original_email"
+                            };
+                            string sqlUpdate = string.Join(" ", sqlUpdateList);
 
                             using (NpgsqlCommand cmdUpdate = new NpgsqlCommand(sqlUpdate, vCon))
                             {
@@ -220,8 +222,13 @@ namespace Login
                         }
                         else if (row.RowState == DataRowState.Deleted)
                         {
-                            // DELETE record
-                            string sqlDelete = "DELETE FROM benutzerTabelle WHERE email = @original_email";
+                            List<string> sqlDeleteList = new List<string>
+                            {
+                                "DELETE FROM benutzerTabelle",
+                                "WHERE email = @original_email"
+                            };
+
+                            string sqlDelete = string.Join(" ", sqlDeleteList);
                             using (NpgsqlCommand cmdDelete = new NpgsqlCommand(sqlDelete, vCon))
                             {
                                 cmdDelete.Parameters.AddWithValue("@original_email", row["email", DataRowVersion.Original]);

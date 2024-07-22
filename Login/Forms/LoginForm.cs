@@ -141,20 +141,21 @@ namespace Login
             using (NpgsqlConnection vCon = new NpgsqlConnection(vStrConnection))
             {
                 try
-                {
+                {                    
                     vCon.Open();
-                    string sql = "SELECT COUNT(*) FROM BenutzerTabelle WHERE (benutzername = @benutzernameOderEmail OR email = @benutzernameOderEmail) AND passworthash = @passwortHash";
+                    List<string> sqlList = new List<string>
+                    {
+                        "SELECT COUNT(*)",
+                        "FROM BenutzerTabelle",
+                        "WHERE (benutzername = @benutzernameOderEmail OR email = @benutzernameOderEmail)",
+                        "AND passworthash = @passwortHash"
+                    };
+
+                    string sql = string.Join(" ", sqlList);
                     using (NpgsqlCommand vCmd = new NpgsqlCommand(sql, vCon))
                     {
                         vCmd.Parameters.AddWithValue("@benutzernameOderEmail", benutzernameOderEmail);
-                        if (benutzernameOderEmail == "root")
-                        {
-                            vCmd.Parameters.AddWithValue("@passwortHash", passwort);
-                        }
-                        else
-                        {
-                            vCmd.Parameters.AddWithValue("@passwortHash", passwortHash);
-                        }
+                        vCmd.Parameters.AddWithValue("@passwortHash", benutzernameOderEmail == "root" ? passwort : passwortHash);
 
                         int count = Convert.ToInt32(vCmd.ExecuteScalar());
                         return count > 0; // Wenn mindestens ein Datensatz gefunden wurde, sind die Anmeldeinformationen korrekt
@@ -176,7 +177,14 @@ namespace Login
                 try
                 {
                     vCon.Open();
-                    string sql = "SELECT status FROM BenutzerTabelle WHERE benutzername = @benutzername OR email = @benutzername";
+                    List<string> sqlList = new List<string>
+                    {
+                        "SELECT status",
+                        "FROM BenutzerTabelle",
+                        "WHERE benutzername = @benutzername OR email = @benutzername"
+                    };
+
+                    string sql = string.Join(" ", sqlList);
                     using (NpgsqlCommand vCmd = new NpgsqlCommand(sql, vCon))
                     {
                         vCmd.Parameters.AddWithValue("@benutzername", benutzernameOderEmail);
@@ -217,57 +225,9 @@ namespace Login
                 
             {
                 MessageBox.Show("Fehler bei der Anmeldung. Überprüfen Sie Ihre Anmeldeinformationen.");
-                // Anzeige einer Fehlermeldung oder erneuter Anmeldeversuch
             }
         }
-        //    try
-        //    {
-        //        bool erfolgreichAngemeldet = false;
-        //        string benutzername = string.Empty;
-        //        string email = string.Empty;
-        //        string status = string.Empty;
-        //        bool angemeldetBleiben = CheckboxAngemeldetbBleiben.Checked;
-        //        if (emailOderBenutzername.Contains("@"))
-        //        {
-        //            erfolgreichAngemeldet = _registrierung.KontrolliereEmailundPasswort(emailOderBenutzername, passwort);
-        //            if (erfolgreichAngemeldet)
-        //            {
-        //                email = emailOderBenutzername;
-        //                benutzername = _registrierung.FindeBenutzernameVonEmail(email);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            erfolgreichAngemeldet = _registrierung.KontrolliereBenutzernameundPasswort(emailOderBenutzername, passwort);
-        //            if (erfolgreichAngemeldet)
-        //            {
-        //                benutzername = emailOderBenutzername;
-        //                email = _registrierung.FindeEmailVonBenutzer(benutzername);
-        //            }
-        //        }
-        //        if (erfolgreichAngemeldet)
-        //        {
-        //            _registrierung.SetzeAngemeldetBleiben(email, angemeldetBleiben);
-        //            status = _registrierung.FindeStatusVonEmail(benutzername);
-
-        //            Homescreen homescreen = new Homescreen(benutzername, status, angemeldetBleiben);
-        //            homescreen.Show();
-        //            this.Hide();
-
-        //            MessageBox.Show("Login erfolgreich!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        }
-
-        //        else
-        //        {
-        //            MessageBox.Show("Ungültige E-Mail/Benutzername oder Passwort.", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-
+        
         private void linkLabelPasswortVergessen_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
