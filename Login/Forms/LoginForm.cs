@@ -22,12 +22,13 @@ namespace Login
     public partial class LoginBildschirm : Form
     {
         private Registrierung _registrierung;
-
+        private DatenbankService dbService;
         public LoginBildschirm()
         {
             this.BackColor = Farben.IceWhite;
             InitializeComponent();
             _registrierung = new Registrierung();
+            dbService = new DatenbankService();
             ButtonLogin.Enabled = false;
             TextfeldPasswort.UseSystemPasswordChar = false;
             SetTextBoxPadding(this.TextfeldEmail, new Padding(8));
@@ -46,19 +47,21 @@ namespace Login
             TextfeldPasswort.ForeColor = Farben.DeepSky;
 
 
-            ÜberprüfeAngemeldetenBenutzer();
+           
         }
        
-        private void ÜberprüfeAngemeldetenBenutzer()
-        {
-            Benutzer angemeldeterBenutzer = _registrierung.FindeAngemeldetenBenutzer();
-            if (angemeldeterBenutzer != null)
-            {
-                Homescreen homescreen = new Homescreen(angemeldeterBenutzer.Benutzername, angemeldeterBenutzer.Status, angemeldeterBenutzer.AngemeldetBleiben);
-                homescreen.Show();
-                this.Hide();
-            }
-        }
+        //private void ÜberprüfeAngemeldetenBenutzer()
+        //{
+        //    Benutzer angemeldeterBenutzer = FindeAngemeldetenBenutzer();
+
+        //    if (angemeldeterBenutzer != null)
+        //    {
+        //        this.Hide();
+        //        Homescreen homescreen = new Homescreen(angemeldeterBenutzer.Benutzername, angemeldeterBenutzer.Status, angemeldeterBenutzer.AngemeldetBleiben);
+        //        homescreen.Show();
+
+        //    }
+        //}
         private void TextfeldPasswort_Enter(object sender, EventArgs e)
         {
             TextfeldPasswort.UseSystemPasswordChar = true;
@@ -115,6 +118,7 @@ namespace Login
             RegistrierungForm registrierung = new RegistrierungForm(this);
             registrierung.Show();
             this.Hide();
+            
 
 
         }
@@ -133,6 +137,27 @@ namespace Login
             }
         }
         string vStrConnection = "Server=localhost; port=3169 ; user id=postgres ; password=Passwort1!; Database=Datenbank;";
+        public static Benutzer FindeAngemeldetenBenutzer()
+        {
+            string vStrConnection = "Server=localhost; port=3169 ; user id=postgres ; password=Passwort1!; Database=Datenbank;";
+            using (var conn = new NpgsqlConnection(vStrConnection))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand("SELECT Benutzername, Status FROM BenutzerTabelle WHERE AngemeldetBleiben = TRUE LIMIT 1", conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string benutzername = reader.GetString(0);
+                            string status = reader.GetString(1);
+                            return new Benutzer { Benutzername = benutzername, Status = status, AngemeldetBleiben = true };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
         private bool BenutzerAnmelden(string benutzernameOderEmail, string passwort)
         {
 
@@ -204,6 +229,20 @@ namespace Login
 
             return status;
         }
+        public void SpeichereAngemeldetenBenutzer(string benutzername, bool angemeldetBleiben)
+        {
+            using (var conn = new NpgsqlConnection(vStrConnection))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand("UPDATE BenutzerTabelle SET AngemeldetBleiben = @AngemeldetBleiben WHERE Benutzername = @BenutzernameOderEmail OR Email = @BenutzernameOderEmail", conn))
+                {
+                    cmd.Parameters.AddWithValue("AngemeldetBleiben", angemeldetBleiben);
+                    cmd.Parameters.AddWithValue("BenutzernameOderEmail", benutzername);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+        }
         public void ButtonLogin_Click(object sender, EventArgs e)
         {
 
@@ -214,11 +253,12 @@ namespace Login
             bool angemeldetBleiben = CheckboxAngemeldetbBleiben.Checked;
             if (loggedIN)
             {
+                SpeichereAngemeldetenBenutzer(benutzernameOderEmail, angemeldetBleiben);
+
+                this.Hide();
                 Homescreen homescreen = new Homescreen(benutzernameOderEmail, status, angemeldetBleiben);
                 homescreen.Show();
-                this.Hide();
-                MessageBox.Show("Login erfolgreich!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                
             }   
             
             else
@@ -242,7 +282,10 @@ namespace Login
         }
 
         private void LoginBildschirm_Load(object sender, EventArgs e)
-        {          
+        {
+
+            //ÜberprüfeAngemeldetenBenutzer();
+
             if (CheckboxAngemeldetbBleiben.Checked == true)
             {
                 ButtonPasswortSicherheit.Enabled = false;

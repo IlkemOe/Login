@@ -183,25 +183,68 @@ namespace Login.Forms
             string sicherheitsantwort = TextboxSicherheitsantwort.Text;
             string status = "Benutzer";
             bool angemeldetBleiben = false;
-            try
+
+            if (NEUERBENUTZER())
             {
                 InsertData(vorname, nachname, email, benutzername, passwort, sicherheitsfrage, sicherheitsantwort, status, angemeldetBleiben);
                 MessageBox.Show("Registrierung erfolgreich!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _loginBildschirm.Show();
                 this.Close();
             }
-            catch (InvalidOperationException ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ein unerwarteter Fehler ist aufgetreten. Bitte veruschen Sie es später erneut.", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
 
         }
-        private string HashPasswort(string passwort)
+
+        public bool NEUERBENUTZER()
         {
+            string vStrConnection = "Server=localhost; port=3169 ; user id=postgres ; password=Passwort1!; Database=Datenbank;";
+            using (var conn = new NpgsqlConnection(vStrConnection))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand("SELECT COUNT(*) from Benutzertabelle WHERE benutzername = @Benutzername AND email = @Email", conn))
+                {
+                    cmd.Parameters.AddWithValue("@Benutzername", TextboxBenutzername.Text);
+                    cmd.Parameters.AddWithValue("@Email", TextboxEmail.Text);
+
+
+                    long Benutzerexistiert = Convert.ToInt64(cmd.ExecuteScalar());
+                    if (Benutzerexistiert > 0)
+                    {
+                        MessageBox.Show("Email und/oder Benutzername bereits vergeben!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
+                }
+
+
+                using (var cmd = new NpgsqlCommand("SELECT COUNT(*) from Benutzertabelle WHERE email = @Email", conn))
+                {
+                    cmd.Parameters.AddWithValue("@Email", TextboxEmail.Text);
+                    long Benutzerexistiert = Convert.ToInt64(cmd.ExecuteScalar());
+                    if (Benutzerexistiert > 0)
+                    {
+                        MessageBox.Show("Email bereits vergeben!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
+                }
+
+                using (var cmd = new NpgsqlCommand("SELECT COUNT(*) from Benutzertabelle WHERE benutzername = @Benutzername", conn))
+                {
+                    cmd.Parameters.AddWithValue("@Benutzername", TextboxBenutzername.Text);
+                    long Benutzerexistiert = Convert.ToInt64(cmd.ExecuteScalar());
+                    if (Benutzerexistiert > 0)
+                    {
+                        MessageBox.Show("Benutzername bereits vergeben!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+         private string HashPasswort(string passwort)
+         {
             using (SHA256 sha256 = SHA256.Create())
             {
 

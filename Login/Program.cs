@@ -17,16 +17,16 @@ namespace Login
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Registrierung registrierung = new Registrierung();
-            Benutzer benutzer = registrierung.LeseBenutzerAusCsv().FirstOrDefault(b => b.AngemeldetBleiben);
 
-            if (benutzer != null)
+            var angemeldeterBenutzer = LoginBildschirm.FindeAngemeldetenBenutzer();
+            if (angemeldeterBenutzer != null)
             {
-                
-                Homescreen homescreen = new Homescreen(benutzer.Benutzername,benutzer.Status, benutzer.AngemeldetBleiben);
-                Application.Run(homescreen);
+                // Direkt zum Hauptbildschirm, wenn ein Benutzer gefunden wird
+                Application.Run(new Homescreen(angemeldeterBenutzer.Benutzername, angemeldeterBenutzer.Status, angemeldeterBenutzer.AngemeldetBleiben));
             }
             else
             {
+                // Zeige erst das Login-Formular, wenn kein Benutzer angemeldet ist
                 Application.Run(new LoginBildschirm());
             }
         }

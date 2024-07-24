@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using Login.Forms;
 
 namespace Login
 {
@@ -105,7 +106,6 @@ namespace Login
             TimerUhrzeit.Start();
             LabelUhrzeit.Text = DateTime.Now.ToLongTimeString();
             LabelDatum.Text = DateTime.Now.ToLongDateString();
-
             Console.WriteLine("Homescreen_Load aufgerufen");
             Console.WriteLine($"Benutzername: {_benutzername}, Status: {_status}");
 
@@ -135,6 +135,8 @@ namespace Login
                 dg.AllowUserToAddRows = true;
                 dg.AllowUserToDeleteRows = true;
                 dg.EditMode = DataGridViewEditMode.EditOnEnter;
+                ButtonBenutzerliste.Visible = false;
+                ButtonNeu.Visible = true;
                 ButtonNeu.Visible = true;
             }
             else
@@ -244,6 +246,12 @@ namespace Login
                     MessageBox.Show("Fehler beim Aktualisieren der Datenbank: " + ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void ButtonNeu_Click(object sender, EventArgs e)
+        {
+            NeuenBenutzerHinzufügen neuerBenutzer = new NeuenBenutzerHinzufügen();
+            neuerBenutzer.Show();
         }
     }
 }

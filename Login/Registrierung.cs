@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.Drawing.Text;
 using System.IO;
@@ -24,37 +25,39 @@ namespace Login
                 SchreibeBenutzerInCsv(benutzerListe);
             }
         }
-        public bool IstEmailBereitsRegistriert(string email)
-        {
-            return LeseBenutzerAusCsv().Any(b => b.Email.Equals(email, StringComparison.OrdinalIgnoreCase));
-        }
-        public bool IstBenutzernameBereitsVergeben(string benutzername)
-        {
-            return LeseBenutzerAusCsv().Any(b => b.Benutzername.Equals(benutzername, StringComparison.OrdinalIgnoreCase));
-        }
-        public void BenutzerRegistrieren(string vorname, string nachname, string email, string benutzername, string passwort, string sicherheitsfrage, string sicherheitsantwort, string status, bool angemeldetBleiben)
-        {
-            if (IstEmailBereitsRegistriert(email))
-            {
-                throw new InvalidOperationException("Ein Konto mit dieser E-Mail existiert bereits.");
-            }
-            else if(IstBenutzernameBereitsVergeben(benutzername))
-            {
-                throw new InvalidOperationException("Der Benutzername ist bereits vergeben.");
-            }          
-            string passwortHash = HashPasswort(passwort);
+        //public bool IstEmailBereitsRegistriert(string email)
+        //{
+        //    return LeseBenutzerAusCsv().Any(b => b.Email.Equals(email, StringComparison.OrdinalIgnoreCase));
+        //}
+        //public bool IstBenutzernameBereitsVergeben(string benutzername)
+        //{
+        //    return LeseBenutzerAusCsv().Any(b => b.Benutzername.Equals(benutzername, StringComparison.OrdinalIgnoreCase));
+        //}
+        //public void BenutzerRegistrieren(string vorname, string nachname, string email, string benutzername, string passwort, string sicherheitsfrage, string sicherheitsantwort, string status, bool angemeldetBleiben)
+        //{
+        //    if (IstEmailBereitsRegistriert(email))
+        //    {
+        //        throw new InvalidOperationException("Ein Konto mit dieser E-Mail existiert bereits.");
+        //    }
+        //    else if(IstBenutzernameBereitsVergeben(benutzername))
+        //    {
+        //        throw new InvalidOperationException("Der Benutzername ist bereits vergeben.");
+        //    }          
+        //    string passwortHash = HashPasswort(passwort);
 
-            bool fileExists = File.Exists(CsvFilePath);
-            using (var writer = new StreamWriter(CsvFilePath, true, Encoding.UTF8))
-            {
-                if (!fileExists)
-                {
-                    writer.WriteLine("Vorname; Nachname; E-Mail; Benutzername; PasswortHash; Sicherheitsfrage; Sicherheitsantwort; Status; AngemeldetBleiben");
-                }
-                writer.WriteLine($"{vorname};{nachname};{email};{benutzername};{passwortHash};{sicherheitsfrage};{sicherheitsantwort};{status};{angemeldetBleiben}");
-            }
-        }
-        public List<Benutzer> LeseBenutzerAusCsv()
+        //    bool fileExists = File.Exists(CsvFilePath);
+        //    using (var writer = new StreamWriter(CsvFilePath, true, Encoding.UTF8))
+        //    {
+        //        if (!fileExists)
+        //        {
+        //            writer.WriteLine("Vorname; Nachname; E-Mail; Benutzername; PasswortHash; Sicherheitsfrage; Sicherheitsantwort; Status; AngemeldetBleiben");
+        //        }
+        //        writer.WriteLine($"{vorname};{nachname};{email};{benutzername};{passwortHash};{sicherheitsfrage};{sicherheitsantwort};{status};{angemeldetBleiben}");
+        //    }
+        //}
+
+        
+                public List<Benutzer> LeseBenutzerAusCsv()
         {
             var benutzerListe = new List<Benutzer>();
             if (File.Exists(CsvFilePath))
@@ -196,13 +199,16 @@ namespace Login
         }
         public void SetzeAngemeldetBleibenAufFalse(string email, bool angemeldetBleiben)
         {
-            var benutzerliste = LeseBenutzerAusCsv();
-            foreach (var benutzer in benutzerliste)
+            string vStrConnection = "Server=localhost; port=3169 ; user id=postgres ; password=Passwort1!; Database=Datenbank;";
+            using (var conn = new NpgsqlConnection(vStrConnection))
             {
-                benutzer.AngemeldetBleiben = false;
-
+                conn.Open();
+                using (var cmd = new NpgsqlCommand("UPDATE BenutzerTabelle SET AngemeldetBleiben = FALSE WHERE AngemeldetBleiben = true", conn))
+                {
+                    cmd.Parameters.AddWithValue("AngemeldetBleiben", angemeldetBleiben);
+                    cmd.ExecuteNonQuery();
+                }
             }
-            SchreibeBenutzerInCsv(benutzerliste);
         }
     }
 }

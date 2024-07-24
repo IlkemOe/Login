@@ -32,4 +32,22 @@ public class DatenbankService
             }
         }
     }
-}
+
+    public string HoleAngemeldetenBenutzer()
+    {
+            using (var conn = new NpgsqlConnection(vStrConnection))
+            {
+                conn.Open();
+
+                string sql = "SELECT Benutzername FROM AngemeldeterBenutzer WHERE AngemeldetBleiben = TRUE";
+
+                using (var cmd = new NpgsqlCommand(sql, conn))
+                {
+                    var result = cmd.ExecuteScalar();
+                    return result != null ? result.ToString() : null;
+                }
+            }
+        }
+    }
+
+

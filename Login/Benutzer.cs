@@ -16,7 +16,6 @@ namespace Login
         public string Sicherheitsfrage { get; set; }
         public string Sicherheitsantwort { get; set; }
         public string Status { get; set; }
-
         public bool AngemeldetBleiben { get; set; }
     }
     
