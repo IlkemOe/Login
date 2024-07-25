@@ -169,7 +169,7 @@
             this.ButtonSpeichern.ForeColor = System.Drawing.Color.White;
             this.ButtonSpeichern.Location = new System.Drawing.Point(128, 314);
             this.ButtonSpeichern.Name = "ButtonSpeichern";
-            this.ButtonSpeichern.Size = new System.Drawing.Size(138, 40);
+            this.ButtonSpeichern.Size = new System.Drawing.Size(138, 32);
             this.ButtonSpeichern.TabIndex = 9;
             this.ButtonSpeichern.Text = "Aktualisieren";
             this.ButtonSpeichern.UseVisualStyleBackColor = false;
@@ -187,10 +187,11 @@
             this.ButtonLöschen.Location = new System.Drawing.Point(162, 70);
             this.ButtonLöschen.Name = "ButtonLöschen";
             this.ButtonLöschen.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.ButtonLöschen.Size = new System.Drawing.Size(42, 27);
+            this.ButtonLöschen.Size = new System.Drawing.Size(45, 27);
             this.ButtonLöschen.TabIndex = 12;
             this.ButtonLöschen.UseVisualStyleBackColor = false;
             this.ButtonLöschen.Visible = false;
+            this.ButtonLöschen.Click += new System.EventHandler(this.ButtonLöschen_Click);
             // 
             // ButtonBearbeiten
             // 
@@ -207,6 +208,7 @@
             this.ButtonBearbeiten.TabIndex = 11;
             this.ButtonBearbeiten.UseVisualStyleBackColor = false;
             this.ButtonBearbeiten.Visible = false;
+            this.ButtonBearbeiten.Click += new System.EventHandler(this.ButtonBearbeiten_Click);
             // 
             // ButtonNeu
             // 

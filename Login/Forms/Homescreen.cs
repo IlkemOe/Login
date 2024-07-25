@@ -45,7 +45,9 @@ namespace Login
             ButtonBenutzerliste.BackColor = Farben.Surfie;
             ButtonSpeichern.BackColor = Farben.Surfie;
             ButtonNeu.ForeColor = Farben.Surfie;
+
         }
+
         string vStrConnection = "Server=localhost; port=3169 ; user id=postgres ; password=Passwort1!; Database=Datenbank;";
 
         private void connection()
@@ -56,6 +58,7 @@ namespace Login
                 vCon.Open();
             }
         }
+
         public DataTable getdata(string sql)
         {
             DataTable dt = new DataTable();
@@ -125,7 +128,7 @@ namespace Login
         private void ButtonBenutzerliste_Click(object sender, EventArgs e)
         {
             if (_status == "Admin")
-            {                
+            {
                 dg.Visible = true;
                 ButtonSpeichern.Visible = true;
                 ButtonBenutzerliste.Visible = false;
@@ -149,7 +152,7 @@ namespace Login
         }
         private void ButtonSpeichern_Click(object sender, EventArgs e)
         {
-            
+
             // Beispiel: Speichern der geänderten Daten im DataGridView zurück in die Datenbank
             DataTable dt = (DataTable)dg.DataSource;
             UpdateDatabase(dt); // Implementieren Sie diese Methode entsprechend
@@ -257,6 +260,65 @@ namespace Login
             neuerBenutzer.Show();
         }
 
+        private void LöscheAusgewählteReihe()
+        {
+            if (dg.SelectedRows.Count > 0)
+            {
+                DialogResult result = MessageBox.Show("Sind Sie sicher, dass Sie die ausgewählte Zeile löschen möchten?", "Löschen", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        string email = dg.SelectedRows[0].Cells["email"].Value.ToString();
+
+                        using (NpgsqlConnection vCon = new NpgsqlConnection(vStrConnection))
+                        {
+                            vCon.Open();
+                            string sqlLöschen = "DELETE FROM benutzerTabelle WHERE email = @original_email";
+
+                            using (NpgsqlCommand cmdDelete = new NpgsqlCommand(sqlLöschen, vCon))
+                            {
+                                cmdDelete.Parameters.AddWithValue("@original_email", email);
+                                cmdDelete.ExecuteNonQuery();
+                            }
+                        }
+
+                        dg.Rows.RemoveAt(dg.SelectedRows[0].Index);
+                        MessageBox.Show("Die Zeile wurde erfolgreich gelöscht.", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Fehler beim Löschen der Zeile: " + ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bitte wählen Sie eine Zeile zum Löschen aus.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void ButtonLöschen_Click(object sender, EventArgs e)
+        {
+            LöscheAusgewählteReihe();
+        }
+
+        private void ButtonBearbeiten_Click(object sender, EventArgs e)
+        {
+            if (dg.SelectedRows.Count > 0)
+            {
+                string email = dg.SelectedRows[0].Cells["email"].Value.ToString();
+                BearbeitenBenutzer bearbeitenBenutzer = new BearbeitenBenutzer(email, this);
+                bearbeitenBenutzer.ShowDialog();
+                // Aktualisieren Sie die DataGridView-Daten nach dem Schließen des Bearbeiten-Fensters
+                DataTable dtgetdata = getdata("SELECT * FROM benutzerTabelle;");
+                dg.DataSource = dtgetdata;
+                dg.ClearSelection();
+            }
+            else
+            {
+                MessageBox.Show("Bitte wählen Sie eine Zeile zum Bearbeiten aus.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }
     
