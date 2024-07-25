@@ -60,7 +60,7 @@
             "Was war Ihr erstes Auto?",
             "Wo sind Sie aufgewachsen?"});
             this.ComboboxSicherheitsfrageAuswählen.Location = new System.Drawing.Point(178, 141);
-            this.ComboboxSicherheitsfrageAuswählen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ComboboxSicherheitsfrageAuswählen.Margin = new System.Windows.Forms.Padding(2);
             this.ComboboxSicherheitsfrageAuswählen.Name = "ComboboxSicherheitsfrageAuswählen";
             this.ComboboxSicherheitsfrageAuswählen.Size = new System.Drawing.Size(278, 30);
             this.ComboboxSicherheitsfrageAuswählen.TabIndex = 1;
@@ -81,7 +81,7 @@
             this.TextboxSIcherheitsfrageAntwort.Font = new System.Drawing.Font("Roboto", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextboxSIcherheitsfrageAntwort.ForeColor = System.Drawing.Color.DodgerBlue;
             this.TextboxSIcherheitsfrageAntwort.Location = new System.Drawing.Point(178, 195);
-            this.TextboxSIcherheitsfrageAntwort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TextboxSIcherheitsfrageAntwort.Margin = new System.Windows.Forms.Padding(2);
             this.TextboxSIcherheitsfrageAntwort.Name = "TextboxSIcherheitsfrageAntwort";
             this.TextboxSIcherheitsfrageAntwort.Size = new System.Drawing.Size(278, 29);
             this.TextboxSIcherheitsfrageAntwort.TabIndex = 3;
@@ -112,7 +112,7 @@
             this.ButtonZurückPWV.ForeColor = System.Drawing.Color.White;
             this.ButtonZurückPWV.Image = global::Login.Properties.Resources.circle_back;
             this.ButtonZurückPWV.Location = new System.Drawing.Point(64, 69);
-            this.ButtonZurückPWV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ButtonZurückPWV.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonZurückPWV.Name = "ButtonZurückPWV";
             this.ButtonZurückPWV.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.ButtonZurückPWV.Size = new System.Drawing.Size(63, 38);
@@ -143,7 +143,7 @@
             this.ButtonÜberprüfen.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonÜberprüfen.ForeColor = System.Drawing.Color.White;
             this.ButtonÜberprüfen.Location = new System.Drawing.Point(273, 236);
-            this.ButtonÜberprüfen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ButtonÜberprüfen.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonÜberprüfen.Name = "ButtonÜberprüfen";
             this.ButtonÜberprüfen.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.ButtonÜberprüfen.Size = new System.Drawing.Size(99, 25);
@@ -167,7 +167,7 @@
             this.Controls.Add(this.ComboboxSicherheitsfrageAuswählen);
             this.Controls.Add(this.LabelSicherheitsfrageAuswählen);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SicherheitsabfrageFürPW";

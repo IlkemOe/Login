@@ -219,5 +219,17 @@
   <ItemGroup>
     <None Include="Resources\AugeZu.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BenutzerHinzufügen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bearbeiten.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Löschen.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

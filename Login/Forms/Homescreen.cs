@@ -137,7 +137,8 @@ namespace Login
                 dg.EditMode = DataGridViewEditMode.EditOnEnter;
                 ButtonBenutzerliste.Visible = false;
                 ButtonNeu.Visible = true;
-                ButtonNeu.Visible = true;
+                ButtonBearbeiten.Visible = true;
+                ButtonLöschen.Visible = true;
                 dg.ClearSelection();
             }
             else
@@ -242,8 +243,6 @@ namespace Login
                             }
                         }
                     }
-
-                    MessageBox.Show("Daten erfolgreich aktualisiert!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {

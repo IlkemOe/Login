@@ -262,10 +262,8 @@ namespace Login.Forms
                         vCmd.Parameters.AddWithValue("@passworthash", passwortHash);
                         vCmd.Parameters.AddWithValue("@sicherheitsfrage", sicherheitsfrage);
                         vCmd.Parameters.AddWithValue("@sicherheitsantwort", sicherheitsantwort);
-                        if (status == "Admin")
-                            vCmd.Parameters.AddWithValue("@status", "Admin");
-                        else
-                            vCmd.Parameters.AddWithValue("@status", "Benutzer");
+                        status = CheckboxAlsAdminHinzufügen.Checked ? "Admin" : "Benutzer";
+                        vCmd.Parameters.AddWithValue("@status", status);
                         vCmd.Parameters.AddWithValue("@angemeldetbleiben", angemeldetbleiben);
 
                         vCmd.ExecuteNonQuery();

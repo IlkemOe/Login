@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NeuenBenutzerHinzufügen));
             this.ButtonZurückNeu = new System.Windows.Forms.Button();
             this.LabelSicherheitsfrageGrund = new System.Windows.Forms.Label();
             this.TextboxSicherheitsantwortNeu = new System.Windows.Forms.TextBox();
@@ -60,11 +61,10 @@
             this.ButtonZurückNeu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonZurückNeu.Image = global::Login.Properties.Resources.circle_back;
             this.ButtonZurückNeu.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.ButtonZurückNeu.Location = new System.Drawing.Point(17, 18);
-            this.ButtonZurückNeu.Margin = new System.Windows.Forms.Padding(4);
+            this.ButtonZurückNeu.Location = new System.Drawing.Point(13, 15);
             this.ButtonZurückNeu.Name = "ButtonZurückNeu";
-            this.ButtonZurückNeu.Padding = new System.Windows.Forms.Padding(11, 0, 11, 0);
-            this.ButtonZurückNeu.Size = new System.Drawing.Size(87, 41);
+            this.ButtonZurückNeu.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.ButtonZurückNeu.Size = new System.Drawing.Size(65, 33);
             this.ButtonZurückNeu.TabIndex = 58;
             this.ButtonZurückNeu.UseVisualStyleBackColor = false;
             this.ButtonZurückNeu.Click += new System.EventHandler(this.ButtonZurückR_Click);
@@ -75,10 +75,10 @@
             this.LabelSicherheitsfrageGrund.BackColor = System.Drawing.Color.Red;
             this.LabelSicherheitsfrageGrund.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelSicherheitsfrageGrund.ForeColor = System.Drawing.Color.White;
-            this.LabelSicherheitsfrageGrund.Location = new System.Drawing.Point(812, 532);
-            this.LabelSicherheitsfrageGrund.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.LabelSicherheitsfrageGrund.Location = new System.Drawing.Point(609, 432);
+            this.LabelSicherheitsfrageGrund.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelSicherheitsfrageGrund.Name = "LabelSicherheitsfrageGrund";
-            this.LabelSicherheitsfrageGrund.Size = new System.Drawing.Size(317, 40);
+            this.LabelSicherheitsfrageGrund.Size = new System.Drawing.Size(267, 34);
             this.LabelSicherheitsfrageGrund.TabIndex = 57;
             this.LabelSicherheitsfrageGrund.Text = "Die Sicherheitsfrage wird abgefragt wenn\r\nSie Ihr Passwort vergessen haben";
             this.LabelSicherheitsfrageGrund.Visible = false;
@@ -87,10 +87,10 @@
             // 
             this.TextboxSicherheitsantwortNeu.Font = new System.Drawing.Font("Roboto", 13.2F);
             this.TextboxSicherheitsantwortNeu.ForeColor = System.Drawing.Color.Gray;
-            this.TextboxSicherheitsantwortNeu.Location = new System.Drawing.Point(380, 577);
-            this.TextboxSicherheitsantwortNeu.Margin = new System.Windows.Forms.Padding(5);
+            this.TextboxSicherheitsantwortNeu.Location = new System.Drawing.Point(285, 469);
+            this.TextboxSicherheitsantwortNeu.Margin = new System.Windows.Forms.Padding(4);
             this.TextboxSicherheitsantwortNeu.Name = "TextboxSicherheitsantwortNeu";
-            this.TextboxSicherheitsantwortNeu.Size = new System.Drawing.Size(363, 34);
+            this.TextboxSicherheitsantwortNeu.Size = new System.Drawing.Size(273, 29);
             this.TextboxSicherheitsantwortNeu.TabIndex = 56;
             this.TextboxSicherheitsantwortNeu.TextChanged += new System.EventHandler(this.TextboxSicherheitsfrage_TextChanged);
             // 
@@ -105,10 +105,10 @@
             "Wie heißt Ihr Lieblingsfilm?",
             "Was war Ihr erstes Auto?",
             "Wo sind Sie aufgewachsen?"});
-            this.ComboboxSicherheitsfrage.Location = new System.Drawing.Point(380, 532);
-            this.ComboboxSicherheitsfrage.Margin = new System.Windows.Forms.Padding(5);
+            this.ComboboxSicherheitsfrage.Location = new System.Drawing.Point(285, 432);
+            this.ComboboxSicherheitsfrage.Margin = new System.Windows.Forms.Padding(4);
             this.ComboboxSicherheitsfrage.Name = "ComboboxSicherheitsfrage";
-            this.ComboboxSicherheitsfrage.Size = new System.Drawing.Size(363, 35);
+            this.ComboboxSicherheitsfrage.Size = new System.Drawing.Size(273, 30);
             this.ComboboxSicherheitsfrage.TabIndex = 55;
             // 
             // LabelSicherheitsfrage
@@ -117,10 +117,10 @@
             this.LabelSicherheitsfrage.BackColor = System.Drawing.Color.Transparent;
             this.LabelSicherheitsfrage.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelSicherheitsfrage.ForeColor = System.Drawing.Color.Gray;
-            this.LabelSicherheitsfrage.Location = new System.Drawing.Point(375, 510);
-            this.LabelSicherheitsfrage.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.LabelSicherheitsfrage.Location = new System.Drawing.Point(281, 414);
+            this.LabelSicherheitsfrage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelSicherheitsfrage.Name = "LabelSicherheitsfrage";
-            this.LabelSicherheitsfrage.Size = new System.Drawing.Size(133, 20);
+            this.LabelSicherheitsfrage.Size = new System.Drawing.Size(109, 17);
             this.LabelSicherheitsfrage.TabIndex = 54;
             this.LabelSicherheitsfrage.Text = "Sicherheitsfrage";
             // 
@@ -130,10 +130,10 @@
             this.LabelEmailFormat.BackColor = System.Drawing.Color.Red;
             this.LabelEmailFormat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelEmailFormat.ForeColor = System.Drawing.Color.White;
-            this.LabelEmailFormat.Location = new System.Drawing.Point(755, 198);
-            this.LabelEmailFormat.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.LabelEmailFormat.Location = new System.Drawing.Point(566, 161);
+            this.LabelEmailFormat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelEmailFormat.Name = "LabelEmailFormat";
-            this.LabelEmailFormat.Size = new System.Drawing.Size(234, 40);
+            this.LabelEmailFormat.Size = new System.Drawing.Size(194, 34);
             this.LabelEmailFormat.TabIndex = 53;
             this.LabelEmailFormat.Text = "Die E-Mail Adresse entspricht\r\n keinem gültigen Format\r\n";
             this.LabelEmailFormat.Visible = false;
@@ -144,10 +144,10 @@
             this.LabelVorname.BackColor = System.Drawing.Color.Transparent;
             this.LabelVorname.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelVorname.ForeColor = System.Drawing.Color.Gray;
-            this.LabelVorname.Location = new System.Drawing.Point(376, 18);
-            this.LabelVorname.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.LabelVorname.Location = new System.Drawing.Point(282, 15);
+            this.LabelVorname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelVorname.Name = "LabelVorname";
-            this.LabelVorname.Size = new System.Drawing.Size(78, 20);
+            this.LabelVorname.Size = new System.Drawing.Size(65, 17);
             this.LabelVorname.TabIndex = 38;
             this.LabelVorname.Text = "Vorname";
             // 
@@ -155,10 +155,10 @@
             // 
             this.TextboxVornameNeu.Font = new System.Drawing.Font("Roboto", 13.2F);
             this.TextboxVornameNeu.ForeColor = System.Drawing.Color.Black;
-            this.TextboxVornameNeu.Location = new System.Drawing.Point(380, 43);
-            this.TextboxVornameNeu.Margin = new System.Windows.Forms.Padding(5);
+            this.TextboxVornameNeu.Location = new System.Drawing.Point(285, 35);
+            this.TextboxVornameNeu.Margin = new System.Windows.Forms.Padding(4);
             this.TextboxVornameNeu.Name = "TextboxVornameNeu";
-            this.TextboxVornameNeu.Size = new System.Drawing.Size(363, 34);
+            this.TextboxVornameNeu.Size = new System.Drawing.Size(273, 29);
             this.TextboxVornameNeu.TabIndex = 39;
             this.TextboxVornameNeu.TextChanged += new System.EventHandler(this.TextboxVorname_TextChanged);
             // 
@@ -167,10 +167,10 @@
             this.LabelPasswortVorgaben.AutoSize = true;
             this.LabelPasswortVorgaben.BackColor = System.Drawing.Color.Red;
             this.LabelPasswortVorgaben.ForeColor = System.Drawing.Color.White;
-            this.LabelPasswortVorgaben.Location = new System.Drawing.Point(755, 358);
-            this.LabelPasswortVorgaben.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.LabelPasswortVorgaben.Location = new System.Drawing.Point(566, 291);
+            this.LabelPasswortVorgaben.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelPasswortVorgaben.Name = "LabelPasswortVorgaben";
-            this.LabelPasswortVorgaben.Size = new System.Drawing.Size(287, 80);
+            this.LabelPasswortVorgaben.Size = new System.Drawing.Size(229, 65);
             this.LabelPasswortVorgaben.TabIndex = 52;
             this.LabelPasswortVorgaben.Text = "Passwort muss mindestens 8 Zeichen lang sein\r\n   einen Großbuchstaben, \r\n   einen" +
     " Kleinbuchstaben, \r\n   eine Zahl und \r\n   ein Sonderzeichen enthalten.";
@@ -182,10 +182,10 @@
             this.LabelNachname.BackColor = System.Drawing.Color.Transparent;
             this.LabelNachname.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelNachname.ForeColor = System.Drawing.Color.Gray;
-            this.LabelNachname.Location = new System.Drawing.Point(375, 98);
-            this.LabelNachname.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.LabelNachname.Location = new System.Drawing.Point(281, 80);
+            this.LabelNachname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelNachname.Name = "LabelNachname";
-            this.LabelNachname.Size = new System.Drawing.Size(90, 20);
+            this.LabelNachname.Size = new System.Drawing.Size(76, 17);
             this.LabelNachname.TabIndex = 40;
             this.LabelNachname.Text = "Nachname";
             // 
@@ -195,10 +195,10 @@
             this.LabelPasswortFehler.BackColor = System.Drawing.Color.Red;
             this.LabelPasswortFehler.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelPasswortFehler.ForeColor = System.Drawing.Color.White;
-            this.LabelPasswortFehler.Location = new System.Drawing.Point(380, 464);
+            this.LabelPasswortFehler.Location = new System.Drawing.Point(285, 377);
             this.LabelPasswortFehler.Margin = new System.Windows.Forms.Padding(0);
             this.LabelPasswortFehler.Name = "LabelPasswortFehler";
-            this.LabelPasswortFehler.Size = new System.Drawing.Size(273, 20);
+            this.LabelPasswortFehler.Size = new System.Drawing.Size(224, 17);
             this.LabelPasswortFehler.TabIndex = 51;
             this.LabelPasswortFehler.Text = "Passwörter stimmen nicht überein!";
             this.LabelPasswortFehler.Visible = false;
@@ -207,10 +207,10 @@
             // 
             this.TextboxNachnameNeu.Font = new System.Drawing.Font("Roboto", 13.2F);
             this.TextboxNachnameNeu.ForeColor = System.Drawing.Color.Black;
-            this.TextboxNachnameNeu.Location = new System.Drawing.Point(380, 119);
+            this.TextboxNachnameNeu.Location = new System.Drawing.Point(285, 97);
             this.TextboxNachnameNeu.Margin = new System.Windows.Forms.Padding(0);
             this.TextboxNachnameNeu.Name = "TextboxNachnameNeu";
-            this.TextboxNachnameNeu.Size = new System.Drawing.Size(363, 34);
+            this.TextboxNachnameNeu.Size = new System.Drawing.Size(273, 29);
             this.TextboxNachnameNeu.TabIndex = 41;
             this.TextboxNachnameNeu.TextChanged += new System.EventHandler(this.TextboxNachname_TextChanged);
             // 
@@ -220,10 +220,10 @@
             this.LabelEmail.BackColor = System.Drawing.Color.Transparent;
             this.LabelEmail.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelEmail.ForeColor = System.Drawing.Color.Gray;
-            this.LabelEmail.Location = new System.Drawing.Point(375, 177);
+            this.LabelEmail.Location = new System.Drawing.Point(281, 144);
             this.LabelEmail.Margin = new System.Windows.Forms.Padding(0);
             this.LabelEmail.Name = "LabelEmail";
-            this.LabelEmail.Size = new System.Drawing.Size(56, 20);
+            this.LabelEmail.Size = new System.Drawing.Size(46, 17);
             this.LabelEmail.TabIndex = 42;
             this.LabelEmail.Text = "E-Mail";
             // 
@@ -234,11 +234,11 @@
             this.ButtonJetztRegistrierenNeu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonJetztRegistrierenNeu.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonJetztRegistrierenNeu.ForeColor = System.Drawing.Color.White;
-            this.ButtonJetztRegistrierenNeu.Location = new System.Drawing.Point(451, 667);
-            this.ButtonJetztRegistrierenNeu.Margin = new System.Windows.Forms.Padding(5);
+            this.ButtonJetztRegistrierenNeu.Location = new System.Drawing.Point(338, 542);
+            this.ButtonJetztRegistrierenNeu.Margin = new System.Windows.Forms.Padding(4);
             this.ButtonJetztRegistrierenNeu.Name = "ButtonJetztRegistrierenNeu";
-            this.ButtonJetztRegistrierenNeu.Padding = new System.Windows.Forms.Padding(11, 0, 11, 0);
-            this.ButtonJetztRegistrierenNeu.Size = new System.Drawing.Size(228, 50);
+            this.ButtonJetztRegistrierenNeu.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.ButtonJetztRegistrierenNeu.Size = new System.Drawing.Size(171, 41);
             this.ButtonJetztRegistrierenNeu.TabIndex = 50;
             this.ButtonJetztRegistrierenNeu.Text = "Jetzt Registrieren";
             this.ButtonJetztRegistrierenNeu.UseVisualStyleBackColor = false;
@@ -250,10 +250,10 @@
             // 
             this.TextboxEmailNeu.Font = new System.Drawing.Font("Roboto", 13.2F);
             this.TextboxEmailNeu.ForeColor = System.Drawing.Color.Black;
-            this.TextboxEmailNeu.Location = new System.Drawing.Point(380, 198);
+            this.TextboxEmailNeu.Location = new System.Drawing.Point(285, 161);
             this.TextboxEmailNeu.Margin = new System.Windows.Forms.Padding(0);
             this.TextboxEmailNeu.Name = "TextboxEmailNeu";
-            this.TextboxEmailNeu.Size = new System.Drawing.Size(363, 34);
+            this.TextboxEmailNeu.Size = new System.Drawing.Size(273, 29);
             this.TextboxEmailNeu.TabIndex = 43;
             this.TextboxEmailNeu.TextChanged += new System.EventHandler(this.TextboxEmail_TextChanged);
             // 
@@ -261,10 +261,10 @@
             // 
             this.TextboxPasswortWiederholenNeu.Font = new System.Drawing.Font("Roboto", 13.2F);
             this.TextboxPasswortWiederholenNeu.ForeColor = System.Drawing.Color.Black;
-            this.TextboxPasswortWiederholenNeu.Location = new System.Drawing.Point(380, 428);
+            this.TextboxPasswortWiederholenNeu.Location = new System.Drawing.Point(285, 348);
             this.TextboxPasswortWiederholenNeu.Margin = new System.Windows.Forms.Padding(0);
             this.TextboxPasswortWiederholenNeu.Name = "TextboxPasswortWiederholenNeu";
-            this.TextboxPasswortWiederholenNeu.Size = new System.Drawing.Size(363, 34);
+            this.TextboxPasswortWiederholenNeu.Size = new System.Drawing.Size(273, 29);
             this.TextboxPasswortWiederholenNeu.TabIndex = 49;
             this.TextboxPasswortWiederholenNeu.TextChanged += new System.EventHandler(this.TextboxPasswortWiederholen_TextChanged);
             this.TextboxPasswortWiederholenNeu.Leave += new System.EventHandler(this.TextboxPasswortWiederholen_Leave);
@@ -275,10 +275,10 @@
             this.LabelBenutzername.BackColor = System.Drawing.Color.Transparent;
             this.LabelBenutzername.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelBenutzername.ForeColor = System.Drawing.Color.Gray;
-            this.LabelBenutzername.Location = new System.Drawing.Point(375, 260);
+            this.LabelBenutzername.Location = new System.Drawing.Point(281, 211);
             this.LabelBenutzername.Margin = new System.Windows.Forms.Padding(0);
             this.LabelBenutzername.Name = "LabelBenutzername";
-            this.LabelBenutzername.Size = new System.Drawing.Size(118, 20);
+            this.LabelBenutzername.Size = new System.Drawing.Size(99, 17);
             this.LabelBenutzername.TabIndex = 44;
             this.LabelBenutzername.Text = "Benutzername";
             this.LabelBenutzername.UseWaitCursor = true;
@@ -289,10 +289,10 @@
             this.LabelPasswortWiederholen.BackColor = System.Drawing.Color.Transparent;
             this.LabelPasswortWiederholen.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelPasswortWiederholen.ForeColor = System.Drawing.Color.Gray;
-            this.LabelPasswortWiederholen.Location = new System.Drawing.Point(375, 406);
-            this.LabelPasswortWiederholen.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.LabelPasswortWiederholen.Location = new System.Drawing.Point(281, 330);
+            this.LabelPasswortWiederholen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelPasswortWiederholen.Name = "LabelPasswortWiederholen";
-            this.LabelPasswortWiederholen.Size = new System.Drawing.Size(178, 20);
+            this.LabelPasswortWiederholen.Size = new System.Drawing.Size(146, 17);
             this.LabelPasswortWiederholen.TabIndex = 48;
             this.LabelPasswortWiederholen.Text = "Passwort wiederholen";
             // 
@@ -300,10 +300,10 @@
             // 
             this.TextboxBenutzernameNeu.Font = new System.Drawing.Font("Roboto", 13.2F);
             this.TextboxBenutzernameNeu.ForeColor = System.Drawing.Color.Black;
-            this.TextboxBenutzernameNeu.Location = new System.Drawing.Point(380, 281);
+            this.TextboxBenutzernameNeu.Location = new System.Drawing.Point(285, 228);
             this.TextboxBenutzernameNeu.Margin = new System.Windows.Forms.Padding(0);
             this.TextboxBenutzernameNeu.Name = "TextboxBenutzernameNeu";
-            this.TextboxBenutzernameNeu.Size = new System.Drawing.Size(363, 34);
+            this.TextboxBenutzernameNeu.Size = new System.Drawing.Size(273, 29);
             this.TextboxBenutzernameNeu.TabIndex = 45;
             this.TextboxBenutzernameNeu.TextChanged += new System.EventHandler(this.TextboxBenutzername_TextChanged);
             // 
@@ -311,10 +311,10 @@
             // 
             this.TextboxPasswortNeu.Font = new System.Drawing.Font("Roboto", 13.2F);
             this.TextboxPasswortNeu.ForeColor = System.Drawing.Color.Black;
-            this.TextboxPasswortNeu.Location = new System.Drawing.Point(380, 358);
-            this.TextboxPasswortNeu.Margin = new System.Windows.Forms.Padding(5);
+            this.TextboxPasswortNeu.Location = new System.Drawing.Point(285, 291);
+            this.TextboxPasswortNeu.Margin = new System.Windows.Forms.Padding(4);
             this.TextboxPasswortNeu.Name = "TextboxPasswortNeu";
-            this.TextboxPasswortNeu.Size = new System.Drawing.Size(363, 34);
+            this.TextboxPasswortNeu.Size = new System.Drawing.Size(273, 29);
             this.TextboxPasswortNeu.TabIndex = 47;
             this.TextboxPasswortNeu.TextChanged += new System.EventHandler(this.TextboxPasswortR_TextChanged);
             this.TextboxPasswortNeu.Leave += new System.EventHandler(this.TextboxPasswortR_Leave);
@@ -325,10 +325,10 @@
             this.LabelPasswortR.BackColor = System.Drawing.Color.Transparent;
             this.LabelPasswortR.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelPasswortR.ForeColor = System.Drawing.Color.Gray;
-            this.LabelPasswortR.Location = new System.Drawing.Point(375, 332);
-            this.LabelPasswortR.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.LabelPasswortR.Location = new System.Drawing.Point(281, 270);
+            this.LabelPasswortR.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelPasswortR.Name = "LabelPasswortR";
-            this.LabelPasswortR.Size = new System.Drawing.Size(82, 20);
+            this.LabelPasswortR.Size = new System.Drawing.Size(68, 17);
             this.LabelPasswortR.TabIndex = 46;
             this.LabelPasswortR.Text = "Passwort";
             // 
@@ -339,11 +339,10 @@
             this.ButtonFragezeichen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonFragezeichen.Font = new System.Drawing.Font("Roboto", 10F);
             this.ButtonFragezeichen.ForeColor = System.Drawing.Color.White;
-            this.ButtonFragezeichen.Location = new System.Drawing.Point(753, 532);
-            this.ButtonFragezeichen.Margin = new System.Windows.Forms.Padding(4);
+            this.ButtonFragezeichen.Location = new System.Drawing.Point(565, 432);
             this.ButtonFragezeichen.Name = "ButtonFragezeichen";
-            this.ButtonFragezeichen.Padding = new System.Windows.Forms.Padding(11, 0, 11, 0);
-            this.ButtonFragezeichen.Size = new System.Drawing.Size(49, 37);
+            this.ButtonFragezeichen.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.ButtonFragezeichen.Size = new System.Drawing.Size(37, 30);
             this.ButtonFragezeichen.TabIndex = 59;
             this.ButtonFragezeichen.Text = "?";
             this.ButtonFragezeichen.UseVisualStyleBackColor = false;
@@ -354,19 +353,18 @@
             // 
             this.CheckboxAlsAdminHinzufügen.AutoSize = true;
             this.CheckboxAlsAdminHinzufügen.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CheckboxAlsAdminHinzufügen.Location = new System.Drawing.Point(380, 622);
-            this.CheckboxAlsAdminHinzufügen.Margin = new System.Windows.Forms.Padding(4);
+            this.CheckboxAlsAdminHinzufügen.Location = new System.Drawing.Point(285, 505);
             this.CheckboxAlsAdminHinzufügen.Name = "CheckboxAlsAdminHinzufügen";
-            this.CheckboxAlsAdminHinzufügen.Size = new System.Drawing.Size(310, 28);
+            this.CheckboxAlsAdminHinzufügen.Size = new System.Drawing.Size(249, 23);
             this.CheckboxAlsAdminHinzufügen.TabIndex = 60;
             this.CheckboxAlsAdminHinzufügen.Text = "Benutzer als Admin hinzufügen";
             this.CheckboxAlsAdminHinzufügen.UseVisualStyleBackColor = true;
             // 
             // NeuenBenutzerHinzufügen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1189, 746);
+            this.ClientSize = new System.Drawing.Size(892, 606);
             this.Controls.Add(this.CheckboxAlsAdminHinzufügen);
             this.Controls.Add(this.ButtonZurückNeu);
             this.Controls.Add(this.LabelSicherheitsfrageGrund);
@@ -390,7 +388,7 @@
             this.Controls.Add(this.TextboxPasswortNeu);
             this.Controls.Add(this.LabelPasswortR);
             this.Controls.Add(this.ButtonFragezeichen);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NeuenBenutzerHinzufügen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NeuenBenutzerHinzufügen";

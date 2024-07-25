@@ -154,7 +154,7 @@
             this.ButtonZurückPasswortVergessen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonZurückPasswortVergessen.Image = global::Login.Properties.Resources.circle_back;
             this.ButtonZurückPasswortVergessen.Location = new System.Drawing.Point(49, 61);
-            this.ButtonZurückPasswortVergessen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ButtonZurückPasswortVergessen.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonZurückPasswortVergessen.Name = "ButtonZurückPasswortVergessen";
             this.ButtonZurückPasswortVergessen.Size = new System.Drawing.Size(75, 32);
             this.ButtonZurückPasswortVergessen.TabIndex = 36;
@@ -181,6 +181,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PasswortVergessenForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Passwort vergessen";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PasswortVergessenForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
