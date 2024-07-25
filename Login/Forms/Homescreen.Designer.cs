@@ -42,6 +42,7 @@
             this.npgsqlDataAdapter1 = new Npgsql.NpgsqlDataAdapter();
             this.ButtonSpeichern = new System.Windows.Forms.Button();
             this.ButtonNeu = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,7 +78,7 @@
             this.ButtonLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonLogout.ForeColor = System.Drawing.Color.White;
             this.ButtonLogout.Location = new System.Drawing.Point(841, 25);
-            this.ButtonLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ButtonLogout.Margin = new System.Windows.Forms.Padding(4);
             this.ButtonLogout.Name = "ButtonLogout";
             this.ButtonLogout.Size = new System.Drawing.Size(100, 39);
             this.ButtonLogout.TabIndex = 3;
@@ -149,7 +150,7 @@
             this.dg.AllowUserToOrderColumns = true;
             this.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg.Location = new System.Drawing.Point(85, 127);
-            this.dg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dg.Margin = new System.Windows.Forms.Padding(4);
             this.dg.Name = "dg";
             this.dg.RowHeadersWidth = 51;
             this.dg.Size = new System.Drawing.Size(856, 230);
@@ -171,11 +172,11 @@
             this.ButtonSpeichern.Font = new System.Drawing.Font("Roboto", 13F);
             this.ButtonSpeichern.ForeColor = System.Drawing.Color.White;
             this.ButtonSpeichern.Location = new System.Drawing.Point(171, 386);
-            this.ButtonSpeichern.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ButtonSpeichern.Margin = new System.Windows.Forms.Padding(4);
             this.ButtonSpeichern.Name = "ButtonSpeichern";
-            this.ButtonSpeichern.Size = new System.Drawing.Size(137, 39);
+            this.ButtonSpeichern.Size = new System.Drawing.Size(184, 49);
             this.ButtonSpeichern.TabIndex = 9;
-            this.ButtonSpeichern.Text = "Speichern";
+            this.ButtonSpeichern.Text = "Aktualisieren";
             this.ButtonSpeichern.UseVisualStyleBackColor = false;
             this.ButtonSpeichern.Visible = false;
             this.ButtonSpeichern.Click += new System.EventHandler(this.ButtonSpeichern_Click);
@@ -188,7 +189,7 @@
             this.ButtonNeu.Font = new System.Drawing.Font("Roboto", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonNeu.ForeColor = System.Drawing.SystemColors.Highlight;
             this.ButtonNeu.Location = new System.Drawing.Point(85, 86);
-            this.ButtonNeu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ButtonNeu.Margin = new System.Windows.Forms.Padding(4);
             this.ButtonNeu.Name = "ButtonNeu";
             this.ButtonNeu.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.ButtonNeu.Size = new System.Drawing.Size(84, 33);
@@ -198,12 +199,30 @@
             this.ButtonNeu.Visible = false;
             this.ButtonNeu.Click += new System.EventHandler(this.ButtonNeu_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Roboto", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.button1.Location = new System.Drawing.Point(171, 86);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.button1.Size = new System.Drawing.Size(84, 33);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Neu";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Visible = false;
+            // 
             // Homescreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(976, 554);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.ButtonNeu);
             this.Controls.Add(this.ButtonSpeichern);
             this.Controls.Add(this.dg);
@@ -215,7 +234,7 @@
             this.Controls.Add(this.LabelAnmeldeNachricht);
             this.Controls.Add(this.LabelBenutzername);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Homescreen";
             this.Padding = new System.Windows.Forms.Padding(11, 0, 11, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -241,5 +260,6 @@
         private Npgsql.NpgsqlDataAdapter npgsqlDataAdapter1;
         private System.Windows.Forms.Button ButtonSpeichern;
         private System.Windows.Forms.Button ButtonNeu;
+        private System.Windows.Forms.Button button1;
     }
 }

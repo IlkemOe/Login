@@ -125,7 +125,7 @@ namespace Login
         private void ButtonBenutzerliste_Click(object sender, EventArgs e)
         {
             if (_status == "Admin")
-            {
+            {                
                 dg.Visible = true;
                 ButtonSpeichern.Visible = true;
                 ButtonBenutzerliste.Visible = false;
@@ -138,6 +138,7 @@ namespace Login
                 ButtonBenutzerliste.Visible = false;
                 ButtonNeu.Visible = true;
                 ButtonNeu.Visible = true;
+                dg.ClearSelection();
             }
             else
             {
@@ -148,10 +149,13 @@ namespace Login
         private void ButtonSpeichern_Click(object sender, EventArgs e)
         {
             
-                // Beispiel: Speichern der geänderten Daten im DataGridView zurück in die Datenbank
-                DataTable dt = (DataTable)dg.DataSource;
-                UpdateDatabase(dt); // Implementieren Sie diese Methode entsprechend
-            
+            // Beispiel: Speichern der geänderten Daten im DataGridView zurück in die Datenbank
+            DataTable dt = (DataTable)dg.DataSource;
+            UpdateDatabase(dt); // Implementieren Sie diese Methode entsprechend
+            DataTable dtgetdata = getdata("SELECT * FROM benutzerTabelle;");
+            dg.DataSource = dtgetdata;
+            dg.ClearSelection();
+
         }
         private void UpdateDatabase(DataTable dt)
         {
@@ -253,6 +257,7 @@ namespace Login
             NeuenBenutzerHinzufügen neuerBenutzer = new NeuenBenutzerHinzufügen();
             neuerBenutzer.Show();
         }
+
     }
 }
     
