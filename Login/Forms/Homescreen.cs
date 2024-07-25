@@ -267,36 +267,59 @@ namespace Login
                 DialogResult result = MessageBox.Show("Sind Sie sicher, dass Sie die ausgewählte Zeile löschen möchten?", "Löschen", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
+
+                    List<string> emailsToDelete = new List<string>();
+                    foreach (DataGridViewRow row in dg.SelectedRows)
+                    {
+                        if (!row.IsNewRow) // Überprüfen, ob es sich nicht um eine neue Zeile handelt
+                        {
+                            string email = row.Cells["email"].Value.ToString();
+                            emailsToDelete.Add(email);
+                        }
+                    }
                     try
                     {
-                        string email = dg.SelectedRows[0].Cells["email"].Value.ToString();
 
                         using (NpgsqlConnection vCon = new NpgsqlConnection(vStrConnection))
                         {
                             vCon.Open();
-                            string sqlLöschen = "DELETE FROM benutzerTabelle WHERE email = @original_email";
 
-                            using (NpgsqlCommand cmdDelete = new NpgsqlCommand(sqlLöschen, vCon))
+                            // Löschen der Datensätze in der Datenbank
+                            foreach (string email in emailsToDelete)
                             {
-                                cmdDelete.Parameters.AddWithValue("@original_email", email);
-                                cmdDelete.ExecuteNonQuery();
+                                string sqlLöschen = "DELETE FROM benutzerTabelle WHERE email = @original_email";
+
+                                using (NpgsqlCommand cmdDelete = new NpgsqlCommand(sqlLöschen, vCon))
+                                {
+                                    cmdDelete.Parameters.AddWithValue("@original_email", email);
+                                    cmdDelete.ExecuteNonQuery();
+                                }
                             }
                         }
 
-                        dg.Rows.RemoveAt(dg.SelectedRows[0].Index);
-                        MessageBox.Show("Die Zeile wurde erfolgreich gelöscht.", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // Entfernen der ausgewählten Zeilen aus dem DataGridView
+                        foreach (DataGridViewRow row in dg.SelectedRows.Cast<DataGridViewRow>().ToList())
+                        {
+                            if (!row.IsNewRow) // Überprüfen, ob es sich nicht um eine neue Zeile handelt
+                            {
+                                dg.Rows.Remove(row);
+                            }
+                        }
+
+                        MessageBox.Show("Die ausgewählten Zeilen wurden erfolgreich gelöscht.", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Fehler beim Löschen der Zeile: " + ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Fehler beim Löschen der Zeilen: " + ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Bitte wählen Sie eine Zeile zum Löschen aus.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bitte wählen Sie mindestens eine Zeile zum Löschen aus.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+    
         private void ButtonLöschen_Click(object sender, EventArgs e)
         {
             LöscheAusgewählteReihe();

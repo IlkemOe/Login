@@ -243,7 +243,7 @@ namespace Login.Forms
                 return builder.ToString();
             }
         }
-        public void InsertData(string name, string vorname, string email, string benutzername, string passwort, string sicherheitsfrage, string sicherheitsantwort, string status, bool angemeldetbleiben)
+        public void InsertData(string vorname, string nachname, string email, string benutzername, string passwort, string sicherheitsfrage, string sicherheitsantwort, string status, bool angemeldetbleiben)
         {
             string passwortHash = HashPasswort(passwort);
             using (NpgsqlConnection vCon = new NpgsqlConnection(vStrConnection))
@@ -255,8 +255,8 @@ namespace Login.Forms
                            VALUES (@name, @vorname, @email, @benutzername, @passworthash, @sicherheitsfrage, @sicherheitsantwort, @status, @angemeldetbleiben)";
                     using (NpgsqlCommand vCmd = new NpgsqlCommand(sql, vCon))
                     {
-                        vCmd.Parameters.AddWithValue("@name", name);
                         vCmd.Parameters.AddWithValue("@vorname", vorname);
+                        vCmd.Parameters.AddWithValue("@name", nachname);
                         vCmd.Parameters.AddWithValue("@email", email);
                         vCmd.Parameters.AddWithValue("@benutzername", benutzername);
                         vCmd.Parameters.AddWithValue("@passworthash", passwortHash);

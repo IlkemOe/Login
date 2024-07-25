@@ -120,6 +120,12 @@
     <Compile Include="Benutzer.cs" />
     <Compile Include="DatenbankService.cs" />
     <Compile Include="Farben.cs" />
+    <Compile Include="Forms\BearbeitenBenutzer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BearbeitenBenutzer.Designer.cs">
+      <DependentUpon>BearbeitenBenutzer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\NeuenBenutzerHinzufügen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +176,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Registrierung.cs" />
+    <EmbeddedResource Include="Forms\BearbeitenBenutzer.resx">
+      <DependentUpon>BearbeitenBenutzer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
