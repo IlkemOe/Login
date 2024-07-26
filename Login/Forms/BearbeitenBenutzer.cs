@@ -40,14 +40,13 @@ namespace Login.Forms
                 ComboboxSicherheitsfrage.Text = row["sicherheitsfrage"].ToString();
                 TextboxSicherheitsantwort.Text = row["sicherheitsantwort"].ToString();
                 CheckboxStatus.Checked = row["status"].ToString() == "Admin";
-                //CheckboxAngemeldetBleiben.Checked = Convert.ToBoolean(row["angemeldetbleiben"]);
                 TextboxPasswort.Text = "";
                 TextboxPasswortWiederholen.Text = "";
             }
 
         }
         
-        private void buttonSpeichern_Click(object sender, EventArgs e)
+        private void ButtonÜberschreiben_Click(object sender, EventArgs e)
         {
             
             try
@@ -57,6 +56,16 @@ namespace Login.Forms
 
                     vCon.Open();
                     string status = CheckboxStatus.Checked ? "Admin" : "Benutzer";
+                    string passwortHash;
+                    if (string.IsNullOrEmpty(TextboxPasswort.Text))
+                    {
+                        DataTable dt = _homescreen.getdata($"SELECT passworthash FROM benutzerTabelle WHERE email = '{_email}'");
+                        passwortHash = dt.Rows[0]["passworthash"].ToString();
+                    }
+                    else
+                    {
+                        passwortHash = HashPasswort(TextboxPasswort.Text);
+                    }
                     string sqlUpdate = @"UPDATE benutzerTabelle
                                          SET name = @name, 
                                              vorname = @vorname, 
@@ -64,16 +73,15 @@ namespace Login.Forms
                                              passworthash = @passworthash, 
                                              sicherheitsfrage = @sicherheitsfrage, 
                                              sicherheitsantwort = @sicherheitsantwort, 
-                                             status = @status, 
-                                             angemeldetbleiben = @angemeldetbleiben
-                                         WHERE email = @original_email";
+                                             status = @status 
+                                             WHERE email = @original_email";
                     using (NpgsqlCommand cmdUpdate = new NpgsqlCommand(sqlUpdate, vCon))
                     {
                         cmdUpdate.Parameters.AddWithValue("@name", TextboxNachname.Text);
                         cmdUpdate.Parameters.AddWithValue("@Vorname", TextboxVorname.Text);
                         cmdUpdate.Parameters.AddWithValue("@original_email", _email);
                         cmdUpdate.Parameters.AddWithValue("@benutzername", TextboxBenutzername.Text);
-                        cmdUpdate.Parameters.AddWithValue("@passworthash", HashPasswort(TextboxPasswort.Text)); // Hash-Funktion für das Passwort
+                        cmdUpdate.Parameters.AddWithValue("@passworthash", passwortHash);
                         cmdUpdate.Parameters.AddWithValue("@sicherheitsfrage", ComboboxSicherheitsfrage.Text);
                         cmdUpdate.Parameters.AddWithValue("@sicherheitsantwort", TextboxSicherheitsantwort.Text);
                         cmdUpdate.Parameters.AddWithValue("@status", status);

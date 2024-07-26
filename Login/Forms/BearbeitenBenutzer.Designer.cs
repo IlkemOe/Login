@@ -41,7 +41,7 @@
             this.LabelPasswortFehler = new System.Windows.Forms.Label();
             this.TextboxNachname = new System.Windows.Forms.TextBox();
             this.LabelEmail = new System.Windows.Forms.Label();
-            this.ButtonJetztRegistrieren = new System.Windows.Forms.Button();
+            this.ButtonÜberschreiben = new System.Windows.Forms.Button();
             this.TextboxEmail = new System.Windows.Forms.TextBox();
             this.TextboxPasswortWiederholen = new System.Windows.Forms.TextBox();
             this.LabelBenutzername = new System.Windows.Forms.Label();
@@ -222,21 +222,21 @@
             this.LabelEmail.TabIndex = 42;
             this.LabelEmail.Text = "E-Mail";
             // 
-            // ButtonJetztRegistrieren
+            // ButtonÜberschreiben
             // 
-            this.ButtonJetztRegistrieren.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.ButtonJetztRegistrieren.Enabled = false;
-            this.ButtonJetztRegistrieren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonJetztRegistrieren.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonJetztRegistrieren.ForeColor = System.Drawing.Color.White;
-            this.ButtonJetztRegistrieren.Location = new System.Drawing.Point(353, 575);
-            this.ButtonJetztRegistrieren.Margin = new System.Windows.Forms.Padding(4);
-            this.ButtonJetztRegistrieren.Name = "ButtonJetztRegistrieren";
-            this.ButtonJetztRegistrieren.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.ButtonJetztRegistrieren.Size = new System.Drawing.Size(171, 41);
-            this.ButtonJetztRegistrieren.TabIndex = 50;
-            this.ButtonJetztRegistrieren.Text = "Jetzt Registrieren";
-            this.ButtonJetztRegistrieren.UseVisualStyleBackColor = false;
+            this.ButtonÜberschreiben.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.ButtonÜberschreiben.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonÜberschreiben.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonÜberschreiben.ForeColor = System.Drawing.Color.White;
+            this.ButtonÜberschreiben.Location = new System.Drawing.Point(353, 575);
+            this.ButtonÜberschreiben.Margin = new System.Windows.Forms.Padding(4);
+            this.ButtonÜberschreiben.Name = "ButtonÜberschreiben";
+            this.ButtonÜberschreiben.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.ButtonÜberschreiben.Size = new System.Drawing.Size(171, 41);
+            this.ButtonÜberschreiben.TabIndex = 50;
+            this.ButtonÜberschreiben.Text = "Überschreiben";
+            this.ButtonÜberschreiben.UseVisualStyleBackColor = false;
+            this.ButtonÜberschreiben.Click += new System.EventHandler(this.ButtonÜberschreiben_Click);
             // 
             // TextboxEmail
             // 
@@ -363,7 +363,7 @@
             this.Controls.Add(this.LabelPasswortFehler);
             this.Controls.Add(this.TextboxNachname);
             this.Controls.Add(this.LabelEmail);
-            this.Controls.Add(this.ButtonJetztRegistrieren);
+            this.Controls.Add(this.ButtonÜberschreiben);
             this.Controls.Add(this.TextboxEmail);
             this.Controls.Add(this.TextboxPasswortWiederholen);
             this.Controls.Add(this.LabelBenutzername);
@@ -394,7 +394,7 @@
         private System.Windows.Forms.Label LabelPasswortFehler;
         private System.Windows.Forms.TextBox TextboxNachname;
         private System.Windows.Forms.Label LabelEmail;
-        private System.Windows.Forms.Button ButtonJetztRegistrieren;
+        private System.Windows.Forms.Button ButtonÜberschreiben;
         private System.Windows.Forms.TextBox TextboxEmail;
         private System.Windows.Forms.TextBox TextboxPasswortWiederholen;
         private System.Windows.Forms.Label LabelBenutzername;
