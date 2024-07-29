@@ -6,7 +6,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Login.Forms
 {
@@ -231,12 +230,11 @@ namespace Login.Forms
          {
             using (SHA256 sha256 = SHA256.Create())
             {
-
                 byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(passwort));
                 StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
+                foreach (var b in bytes)
                 {
-                    builder.Append(bytes[i].ToString("x2"));
+                    builder.Append(b.ToString("x2"));
                 }
                 return builder.ToString();
             }
@@ -326,7 +324,6 @@ namespace Login.Forms
                 textBox.BackColor = Color.White;
             }
         }
-
 
 
         private void ButtonZurückR_MouseHover(object sender, EventArgs e)

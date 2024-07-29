@@ -106,6 +106,7 @@
             // 
             this.ButtonBestätigenV.AutoSize = true;
             this.ButtonBestätigenV.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ButtonBestätigenV.Enabled = false;
             this.ButtonBestätigenV.FlatAppearance.BorderSize = 0;
             this.ButtonBestätigenV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonBestätigenV.Font = new System.Drawing.Font("Roboto", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
