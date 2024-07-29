@@ -77,7 +77,7 @@ namespace Login.Forms
             this.TextboxVorname.Name = "TextboxVorname";
             this.TextboxVorname.Size = new System.Drawing.Size(273, 29);
             this.TextboxVorname.TabIndex = 10;
-            this.TextboxVorname.TextChanged += new System.EventHandler(this.TextboxVorname_TextChanged);
+            this.TextboxVorname.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.TextboxVorname.MouseLeave += new System.EventHandler(this.Textbox_MouseLeave);
             this.TextboxVorname.MouseHover += new System.EventHandler(this.Textbox_MouseHover);
             // 
@@ -103,7 +103,7 @@ namespace Login.Forms
             this.TextboxNachname.Name = "TextboxNachname";
             this.TextboxNachname.Size = new System.Drawing.Size(273, 29);
             this.TextboxNachname.TabIndex = 12;
-            this.TextboxNachname.TextChanged += new System.EventHandler(this.TextboxNachname_TextChanged);
+            this.TextboxNachname.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.TextboxNachname.MouseLeave += new System.EventHandler(this.Textbox_MouseLeave);
             this.TextboxNachname.MouseHover += new System.EventHandler(this.Textbox_MouseHover);
             // 
@@ -156,7 +156,7 @@ namespace Login.Forms
             this.TextboxBenutzername.Name = "TextboxBenutzername";
             this.TextboxBenutzername.Size = new System.Drawing.Size(273, 29);
             this.TextboxBenutzername.TabIndex = 16;
-            this.TextboxBenutzername.TextChanged += new System.EventHandler(this.TextboxBenutzername_TextChanged);
+            this.TextboxBenutzername.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
             this.TextboxBenutzername.MouseLeave += new System.EventHandler(this.Textbox_MouseLeave);
             this.TextboxBenutzername.MouseHover += new System.EventHandler(this.Textbox_MouseHover);
             // 

@@ -57,9 +57,9 @@
             this.ButtonLogin.Text = "Login";
             this.ButtonLogin.UseVisualStyleBackColor = false;
             this.ButtonLogin.Click += new System.EventHandler(this.ButtonLogin_Click);
-            this.ButtonLogin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ButtonLogin_MouseDown);
-            this.ButtonLogin.MouseLeave += new System.EventHandler(this.ButtonLogin_MouseLeave);
-            this.ButtonLogin.MouseHover += new System.EventHandler(this.ButtonLogin_MouseHover);
+            this.ButtonLogin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.ButtonLogin.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
+            this.ButtonLogin.MouseHover += new System.EventHandler(this.Control_MouseHover);
             // 
             // ButtonRegistrieren
             // 
@@ -77,7 +77,9 @@
             this.ButtonRegistrieren.Text = "Registrieren";
             this.ButtonRegistrieren.UseVisualStyleBackColor = false;
             this.ButtonRegistrieren.Click += new System.EventHandler(this.ButtonRegistrieren_Click);
-            this.ButtonRegistrieren.MouseHover += new System.EventHandler(this.ButtonRegistrieren_MouseHover);
+            this.ButtonRegistrieren.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.ButtonRegistrieren.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
+            this.ButtonRegistrieren.MouseHover += new System.EventHandler(this.Control_MouseHover);
             // 
             // TextfeldPasswort
             // 
@@ -90,8 +92,9 @@
             this.TextfeldPasswort.TabIndex = 2;
             this.TextfeldPasswort.TextChanged += new System.EventHandler(this.TextfeldPasswort_TextChanged);
             this.TextfeldPasswort.Enter += new System.EventHandler(this.TextfeldPasswort_Enter);
-            this.TextfeldPasswort.MouseLeave += new System.EventHandler(this.TextfeldPasswort_MouseLeave);
-            this.TextfeldPasswort.MouseHover += new System.EventHandler(this.TextfeldPasswort_MouseHover);
+            this.TextfeldPasswort.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.TextfeldPasswort.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
+            this.TextfeldPasswort.MouseHover += new System.EventHandler(this.Control_MouseHover);
             // 
             // TextfeldEmail
             // 
@@ -104,8 +107,9 @@
             this.TextfeldEmail.Size = new System.Drawing.Size(235, 29);
             this.TextfeldEmail.TabIndex = 1;
             this.TextfeldEmail.TextChanged += new System.EventHandler(this.TextfeldEmail_TextChanged);
-            this.TextfeldEmail.MouseLeave += new System.EventHandler(this.TextfeldEmail_MouseLeave);
-            this.TextfeldEmail.MouseHover += new System.EventHandler(this.TextfeldEmail_MouseHover);
+            this.TextfeldEmail.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.TextfeldEmail.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
+            this.TextfeldEmail.MouseHover += new System.EventHandler(this.Control_MouseHover);
             // 
             // LabelEmailBenutzername
             // 
@@ -187,9 +191,9 @@
             this.ButtonPasswortSicherheit.UseVisualStyleBackColor = false;
             this.ButtonPasswortSicherheit.Visible = false;
             this.ButtonPasswortSicherheit.Click += new System.EventHandler(this.ButtonPasswortSicherheit_Click);
-            this.ButtonPasswortSicherheit.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ButtonPasswortSicherheit_MouseDown);
-            this.ButtonPasswortSicherheit.MouseLeave += new System.EventHandler(this.ButtonPasswortSicherheit_MouseLeave);
-            this.ButtonPasswortSicherheit.MouseHover += new System.EventHandler(this.ButtonPasswortSicherheit_MouseHover);
+            this.ButtonPasswortSicherheit.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.ButtonPasswortSicherheit.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
+            this.ButtonPasswortSicherheit.MouseHover += new System.EventHandler(this.Control_MouseHover);
             // 
             // LoginBildschirm
             // 
@@ -213,7 +217,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login Bildschirm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginBildschirm_FormClosing);
-            this.Load += new System.EventHandler(this.LoginBildschirm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

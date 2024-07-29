@@ -1,20 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Aspose.Svg;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Text.RegularExpressions;
 using Login.Forms;
 using Npgsql;
-using System.Linq.Expressions;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 using System.Security.Cryptography;
 
 namespace Login
@@ -23,15 +14,17 @@ namespace Login
     {
         private Registrierung _registrierung;
         private DatenbankService dbService;
+
+
+
         public LoginBildschirm()
         {
+            //Hintergrund
             this.BackColor = Farben.IceWhite;
             InitializeComponent();
             _registrierung = new Registrierung();
             dbService = new DatenbankService();
             ButtonLogin.Enabled = false;
-            TextfeldPasswort.UseSystemPasswordChar = false;
-            SetTextBoxPadding(this.TextfeldEmail, new Padding(8));
             
             //Farben
             LabelEmailBenutzername.ForeColor = Farben.ColdMountain;
@@ -49,29 +42,12 @@ namespace Login
 
            
         }
-       
-        //private void ÜberprüfeAngemeldetenBenutzer()
-        //{
-        //    Benutzer angemeldeterBenutzer = FindeAngemeldetenBenutzer();
 
-        //    if (angemeldeterBenutzer != null)
-        //    {
-        //        this.Hide();
-        //        Homescreen homescreen = new Homescreen(angemeldeterBenutzer.Benutzername, angemeldeterBenutzer.Status, angemeldeterBenutzer.AngemeldetBleiben);
-        //        homescreen.Show();
-
-        //    }
-        //}
-        private void TextfeldPasswort_Enter(object sender, EventArgs e)
-        {
-            TextfeldPasswort.UseSystemPasswordChar = true;
-            ButtonPasswortSicherheit.Visible = true;
-        }
         //Login Button Sichtbarkeit
         private void TextfeldEmail_TextChanged(object sender, EventArgs e)
         {
 
-            if (TextfeldEmail.Text == "E-Mail / Benutzername" || TextfeldPasswort.Text == "" || TextfeldEmail.Text == "")
+            if (TextfeldPasswort.Text == "" || TextfeldEmail.Text == "")
             {
                 ButtonLogin.Enabled = false;
                 ButtonLogin.BackColor = Farben.ButtonOpacity;
@@ -85,7 +61,7 @@ namespace Login
 
         private void TextfeldPasswort_TextChanged(object sender, EventArgs e)
         {
-            if (TextfeldEmail.Text == "E-Mail / Benutzername" || TextfeldPasswort.Text == "" || TextfeldEmail.Text == "")
+            if (TextfeldPasswort.Text == "" || TextfeldEmail.Text == "")
             {
                 ButtonLogin.Enabled = false;
                 ButtonLogin.BackColor = Farben.ButtonOpacity;
@@ -96,8 +72,17 @@ namespace Login
                 ButtonLogin.BackColor = Farben.Surfie;
             }
         }
-        //PasswortSichtbarkeit
 
+
+        //Sichtbarkeit Sicherheitsauge
+        private void TextfeldPasswort_Enter(object sender, EventArgs e)
+        {
+            TextfeldPasswort.UseSystemPasswordChar = true;
+            ButtonPasswortSicherheit.Visible = true;
+        }
+
+
+        //PasswortSichtbarkeit
         private void ButtonPasswortSicherheit_Click(object sender, EventArgs e)
         {
             if (TextfeldPasswort.UseSystemPasswordChar == true)
@@ -113,15 +98,18 @@ namespace Login
                 ButtonPasswortSicherheit.Image = new Bitmap(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\Resources\Auge.png"));
             }
         }
+
+
+        //Weiter zum Registrieren
         private void ButtonRegistrieren_Click(object sender, EventArgs e)
         {
             RegistrierungForm registrierung = new RegistrierungForm(this);
             registrierung.Show();
             this.Hide();
-            
-
-
         }
+
+
+        //Passwort verschlüsselung
         private string HashPasswort(string passwort)
         {
             using (SHA256 sha256 = SHA256.Create())
@@ -136,7 +124,13 @@ namespace Login
                 return builder.ToString();
             }
         }
+
+
+        //Datenbankanbindung
         string vStrConnection = "Server=localhost; port=3169 ; user id=postgres ; password=Passwort1!; Database=Datenbank;";
+
+
+        //Sucht in der Datenbank nach möglichen Benutzern
         public static Benutzer FindeAngemeldetenBenutzer()
         {
             string vStrConnection = "Server=localhost; port=3169 ; user id=postgres ; password=Passwort1!; Database=Datenbank;";
@@ -158,6 +152,9 @@ namespace Login
             }
             return null;
         }
+
+
+        //Logik um gefundenen Benutzer anzumelden
         private bool BenutzerAnmelden(string benutzernameOderEmail, string passwort)
         {
 
@@ -193,6 +190,9 @@ namespace Login
                 }
             }
         }
+
+
+        //Hier wird der Status von Email/Benutzername bestimmt
         private string BenutzerStatus(string benutzernameOderEmail)
         {
             string status = string.Empty;
@@ -229,6 +229,9 @@ namespace Login
 
             return status;
         }
+
+
+        //Update wenn man Angemeldet bleiben möchte
         public void SpeichereAngemeldetenBenutzer(string benutzername, bool angemeldetBleiben)
         {
             using (var conn = new NpgsqlConnection(vStrConnection))
@@ -243,6 +246,9 @@ namespace Login
             }
 
         }
+
+
+        //Hier wird eingeloggt
         public void ButtonLogin_Click(object sender, EventArgs e)
         {
 
@@ -268,6 +274,8 @@ namespace Login
             }
         }
         
+
+        //Zu Passwort vergessen 
         private void linkLabelPasswortVergessen_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
@@ -276,98 +284,77 @@ namespace Login
             this.Hide();
         }
 
+
+        //Programm wird beendet wenn Form geschlossen wird
         private void LoginBildschirm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
 
-        private void LoginBildschirm_Load(object sender, EventArgs e)
+
+        //Eventhandler für Farben in Events
+        private void Control_MouseHover(object sender, EventArgs e)
         {
-
-            //ÜberprüfeAngemeldetenBenutzer();
-
-            if (CheckboxAngemeldetbBleiben.Checked == true)
+            if (sender is System.Windows.Forms.Button button)
             {
-                ButtonPasswortSicherheit.Enabled = false;
+                switch (button.Name)
+                {
+                    case "ButtonRegistrieren":
+                        button.BackColor = Farben.Illusion;
+                        break;
+                    case "ButtonLogin":
+                        button.BackColor = Farben.BlueShadow;
+                        break;
+                    case "ButtonPasswortSicherheit":
+                        button.BackColor = Farben.DarkSurfie;
+                        break;
+                }
             }
-            else
+            else if (sender is System.Windows.Forms.TextBox textBox)
             {
-                ButtonPasswortSicherheit.Enabled = true;
+                textBox.BackColor = Farben.ArcticWhite;
+            }
+        }
+        private void Control_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is System.Windows.Forms.Button button)
+            {
+                switch (button.Name)
+                {
+                    case "ButtonRegistrieren":
+                        button.BackColor = Farben.Iron;
+                        break;
+                    case "ButtonLogin":
+                        button.BackColor = Farben.Surfie;
+                        break;
+                    case "ButtonPasswortSicherheit":
+                        button.BackColor = Farben.Surfie;
+                        break;
+                }
+            }
+            else if (sender is System.Windows.Forms.TextBox textBox)
+            {
+                textBox.BackColor = Color.White;
+            }
+        }
+        private void Control_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (sender is System.Windows.Forms.Button button)
+            {
+                switch (button.Name)
+                {
+                    case "ButtonRegistrieren":
+                        button.BackColor = Farben.Mystic;
+                        break;
+                    case "ButtonLogin":
+                        button.BackColor = Farben.DarkSurfie;
+                        break;
+                    case "ButtonPasswortSicherheit":
+                        button.BackColor = Farben.DarkSurfie;
+                        break;
+                }
             }
         }
 
-        private void ButtonRegistrieren_MouseHover(object sender, EventArgs e)
-        {
-            ButtonRegistrieren.BackColor = Farben.Illusion;
-        }
-        private void ButtonRegistrieren_MouseLeave(object sender, EventArgs e)
-        {
-            ButtonRegistrieren.BackColor = Farben.Iron;
-        }
-        private void ButtonRegistrieren_MouseDown(object sender, MouseEventArgs e)
-        {
-            ButtonRegistrieren.BackColor = Farben.Mystic;
-        }
-
-        private void ButtonLogin_MouseHover(object sender, EventArgs e)
-        {
-            ButtonLogin.BackColor = Farben.BlueShadow;
-        }
-
-        private void ButtonLogin_MouseLeave(object sender, EventArgs e)
-        {
-            ButtonLogin.BackColor = Farben.Surfie;
-        }
-
-        private void ButtonLogin_MouseDown(object sender, MouseEventArgs e)
-        {
-            ButtonLogin.BackColor = Farben.DarkSurfie;
-        }
-
-        private void ButtonPasswortSicherheit_MouseHover(object sender, EventArgs e)
-        {
-            ButtonPasswortSicherheit.BackColor = Farben.DarkSurfie;
-        }
-
-        private void ButtonPasswortSicherheit_MouseLeave(object sender, EventArgs e)
-        {
-            ButtonPasswortSicherheit.BackColor = Farben.Surfie;
-        }
-
-        private void ButtonPasswortSicherheit_MouseDown(object sender, MouseEventArgs e)
-        {
-            ButtonPasswortSicherheit.BackColor = Farben.DarkSurfie;
-        }
-
-        private void TextfeldEmail_MouseHover(object sender, EventArgs e)
-        {
-            TextfeldEmail.BackColor = Farben.ArcticWhite;
-        }
-
-        private void TextfeldEmail_MouseLeave(object sender, EventArgs e)
-        {
-            TextfeldEmail.BackColor = Color.White;
-        }
-
-        private void TextfeldPasswort_MouseHover(object sender, EventArgs e)
-        {
-            TextfeldPasswort.BackColor = Farben.ArcticWhite;
-        }
-
-        private void TextfeldPasswort_MouseLeave(object sender, EventArgs e)
-        {
-            TextfeldPasswort.BackColor = Color.White;
-        }
-
-        private void SetTextBoxPadding(System.Windows.Forms.TextBox textBox, Padding padding)
-        {
-            textBox.Padding = padding;
-        }
-
-        private void SetButtonPadding(System.Windows.Forms.Button button, Padding padding)
-        {
-            button.Padding = padding;
-            button.TextAlign = ContentAlignment.MiddleCenter;
-        }
     }
 }

@@ -1,24 +1,23 @@
 ﻿using Npgsql;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Text;
-using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Login.Forms
 {
     public partial class RegistrierungForm : Form
     {
+
         private LoginBildschirm _loginBildschirm;
         private Registrierung _registrierung;
+        private readonly string vStrConnection = "Server=localhost; port=3169 ; user id=postgres ; password=Passwort1!; Database=Datenbank;";
+
+
         public RegistrierungForm(LoginBildschirm loginBildschirm)
         {
             this.BackColor = Farben.IceWhite;
@@ -26,10 +25,23 @@ namespace Login.Forms
             InitializeComponent();
             _loginBildschirm = loginBildschirm;
             _registrierung = new Registrierung();
+
+            InitializeForm();
+        }
+
+        private void InitializeForm()
+        {
             TextboxPasswortR.UseSystemPasswordChar = true;
             TextboxPasswortWiederholen.UseSystemPasswordChar = true;
-            
-            //Farben
+
+            setzeFarben();
+
+            AddEventHandlers();
+        }
+
+
+        private void setzeFarben()
+        {
             ButtonJetztRegistrieren.BackColor = Farben.ButtonOpacity;
             ButtonZurückR.ForeColor = Farben.DeepSky;
             ButtonZurückR.BackColor = Farben.Iron;
@@ -40,7 +52,7 @@ namespace Login.Forms
             LabelEmail.ForeColor = Farben.ColdMountain;
             LabelBenutzername.ForeColor = Farben.ColdMountain;
             LabelPasswortR.ForeColor = Farben.ColdMountain;
-            LabelPasswortWiederholen.ForeColor = Farben.ColdMountain;           
+            LabelPasswortWiederholen.ForeColor = Farben.ColdMountain;
             LabelSicherheitsfrage.ForeColor = Farben.ColdMountain;
             TextboxVorname.ForeColor = Farben.DeepSky;
             TextboxNachname.ForeColor = Farben.DeepSky;
@@ -55,122 +67,118 @@ namespace Login.Forms
             LabelPasswortFehler.BackColor = Farben.OldRuby;
             LabelSicherheitsfrageGrund.BackColor = Farben.OldRuby;
         }
-        string vStrConnection = "Server=localhost; port=3169 ; user id=postgres ; password=Passwort1!; Database=Datenbank;";
-        private void TextboxVorname_TextChanged(object sender, EventArgs e)
+
+
+        //Kontrolliert änderungen in Feldern
+        private void AddEventHandlers()
+        {
+            TextboxVorname.TextChanged += Textbox_TextChanged;
+            TextboxNachname.TextChanged += Textbox_TextChanged;
+            TextboxEmail.TextChanged += TextboxEmail_TextChanged;
+            TextboxBenutzername.TextChanged += Textbox_TextChanged;
+            TextboxPasswortR.TextChanged += TextboxPasswortR_TextChanged;
+            TextboxPasswortR.Leave += TextboxPasswortR_Leave;
+            TextboxPasswortWiederholen.TextChanged += TextboxPasswortWiederholen_TextChanged;
+            TextboxPasswortWiederholen.Leave += TextboxPasswortWiederholen_Leave;
+            TextboxSicherheitsantwort.TextChanged += Textbox_TextChanged;
+            ButtonJetztRegistrieren.Click += ButtonJetztRegistrieren_Click;
+            ButtonZurückR.Click += ButtonZurückR_Click;
+            ButtonFragezeichen.MouseHover += PictureboxFragezeichen_MouseHover;
+            ButtonFragezeichen.MouseLeave += PictureboxFragezeichen_MouseLeave;
+            ButtonJetztRegistrieren.MouseHover += ButtonJetztRegistrieren_MouseHover;
+            ButtonJetztRegistrieren.MouseLeave += ButtonJetztRegistrieren_MouseLeave;
+            ButtonJetztRegistrieren.MouseDown += ButtonJetztRegistrieren_MouseDown;
+            ButtonZurückR.MouseHover += ButtonZurückR_MouseHover;
+            ButtonZurückR.MouseLeave += ButtonZurückR_MouseLeave;
+            foreach (var textBox in this.Controls.OfType<TextBox>())
+            {
+                textBox.MouseHover += Textbox_MouseHover;
+                textBox.MouseLeave += Textbox_MouseLeave;
+            }
+        }
+
+
+        private void Textbox_TextChanged(object sender, EventArgs e)
         {
             RegistrierenKontrolle();
         }
-        private void TextboxNachname_TextChanged(object sender, EventArgs e)
-        {
-            RegistrierenKontrolle();
-        }
+
+
         private void TextboxEmail_TextChanged(object sender, EventArgs e)
         {
             RegistrierenKontrolle();
-            if (RegexEmail(TextboxEmail.Text))
-            {
-                LabelEmailFormat.Visible = false;
-            }
-            else if (TextboxEmail.Text == "E-Mail")
-            {
-                LabelEmailFormat.Visible = false;
-            }
-            else
-            {
-                LabelEmailFormat.Visible = true;
-            }
-        }
-        private void TextboxBenutzername_TextChanged(object sender, EventArgs e)
-        {
             RegistrierenKontrolle();
+            LabelEmailFormat.Visible = !RegexEmail(TextboxEmail.Text) && TextboxEmail.Text != "E-Mail";
         }
+
+
         private void TextboxPasswortR_Leave(object sender, EventArgs e)
         {
-            if (TextboxPasswortR.Text != TextboxPasswortWiederholen.Text)
-            {
-                LabelPasswortFehler.Visible = true;
-            }
-            else
-            {
-                LabelPasswortFehler.Visible = false;
-            }
+            LabelPasswortFehler.Visible = TextboxPasswortR.Text != TextboxPasswortWiederholen.Text;
         }
+
+
         private void TextboxPasswortR_TextChanged(object sender, EventArgs e)
         {
             RegistrierenKontrolle();
         }
+
+
         private void TextboxPasswortWiederholen_Leave(object sender, EventArgs e)
         {
-            if (TextboxPasswortR.Text != TextboxPasswortWiederholen.Text)
-            {
-                LabelPasswortVorgaben.Visible = true;
-            }
-            else
-            {
-                LabelPasswortVorgaben.Visible = false;
-            }
+            LabelPasswortVorgaben.Visible = TextboxPasswortR.Text != TextboxPasswortWiederholen.Text;
         }
+
+
         private void TextboxPasswortWiederholen_TextChanged(object sender, EventArgs e)
         {
             RegistrierenKontrolle();
             bool istPasswortValidiert = PasswortValidieren(TextboxPasswortR.Text);
             bool stimmtPasswortÜberein = TextboxPasswortR.Text == TextboxPasswortWiederholen.Text;
-            if (!stimmtPasswortÜberein)
-            {
-                LabelPasswortFehler.Visible = true;
-            }
-            else
-            {
-                LabelPasswortFehler.Visible = false;
-            }
-            if (!istPasswortValidiert)
-            {
-                LabelPasswortVorgaben.Visible = true;
-            }
-            else
-            {
-                LabelPasswortVorgaben.Visible = false;
-            }
+            LabelPasswortFehler.Visible = !stimmtPasswortÜberein;
+            LabelPasswortVorgaben.Visible = !istPasswortValidiert;
         }
+
+
         private void TextboxSicherheitsfrage_TextChanged(object sender, EventArgs e)
         {
             RegistrierenKontrolle();
         }
+
+
         public void RegistrierenKontrolle()
         {
-            if (TextboxVorname.Text == "Vorname" || TextboxNachname.Text == "Nachname" || TextboxEmail.Text == "E-Mail" || RegexEmail(TextboxEmail.Text) == false || TextboxBenutzername.Text == "Benutzername" || TextboxPasswortR.Text == "Passwort" || ComboboxSicherheitsfrage.SelectedIndex == -1 || TextboxSicherheitsantwort.Text == "Ihre Antwort..." || TextboxPasswortWiederholen.Text != TextboxPasswortR.Text || TextboxVorname.Text == "" || TextboxNachname.Text == "" || TextboxEmail.Text == "" || TextboxBenutzername.Text == "" || TextboxPasswortR.Text == "" || TextboxSicherheitsantwort.Text == "")
-            {
-                ButtonJetztRegistrieren.BackColor = Farben.ButtonOpacity;
-                ButtonJetztRegistrieren.Enabled = false;
-            }
-            else
-            {
-                ButtonJetztRegistrieren.BackColor = Farben.Surfie;
-                ButtonJetztRegistrieren.Enabled = true;
-            }
+            bool isFormValid = TextboxVorname.Text != "Vorname" && !string.IsNullOrEmpty(TextboxVorname.Text) &&
+                               TextboxNachname.Text != "Nachname" && !string.IsNullOrEmpty(TextboxNachname.Text) &&
+                               RegexEmail(TextboxEmail.Text) && TextboxEmail.Text != "E-Mail" &&
+                               TextboxBenutzername.Text != "Benutzername" && !string.IsNullOrEmpty(TextboxBenutzername.Text) &&
+                               TextboxPasswortR.Text != "Passwort" && !string.IsNullOrEmpty(TextboxPasswortR.Text) &&
+                               ComboboxSicherheitsfrage.SelectedIndex != -1 &&
+                               TextboxSicherheitsantwort.Text != "Ihre Antwort..." && !string.IsNullOrEmpty(TextboxSicherheitsantwort.Text) &&
+                               TextboxPasswortR.Text == TextboxPasswortWiederholen.Text;
+
+            ButtonJetztRegistrieren.BackColor = isFormValid ? Farben.Surfie : Farben.ButtonOpacity;
+            ButtonJetztRegistrieren.Enabled = isFormValid;
         }
-        private bool RegexEmail(string Email)
+
+
+        private bool RegexEmail(string email)
         {
             Regex regex = new Regex(@"^[^\s@]+@[^\s@]+\.[^\s@]+$");
-            bool result;
-            result = regex.IsMatch(Email);
-            return result;
+            return regex.IsMatch(email);
         }
-        private bool PasswortValidieren(string Passwort)
-        {
-            if (Passwort.Length < 8)
-                return false;
-            if (!Passwort.Any(char.IsUpper))
-                return false;
-            if (!Passwort.Any(char.IsLower))
-                return false;
-            if (!Passwort.Any(char.IsDigit))
-                return false;
-            if (!Passwort.Any(ch => !char.IsLetterOrDigit(ch)))
-                return false;
 
-            return true;
+
+        private bool PasswortValidieren(string passwort)
+        {
+            return passwort.Length >= 8 &&
+                   passwort.Any(char.IsUpper) &&
+                   passwort.Any(char.IsLower) &&
+                   passwort.Any(char.IsDigit) &&
+                   passwort.Any(ch => !char.IsLetterOrDigit(ch));
         }
+
+
         private void ButtonJetztRegistrieren_Click(object sender, EventArgs e)
         {           
            
@@ -184,65 +192,41 @@ namespace Login.Forms
             string status = "Benutzer";
             bool angemeldetBleiben = false;
 
-            if (NEUERBENUTZER())
+            if (IstNeuerBenutzer())
             {
                 InsertData(vorname, nachname, email, benutzername, passwort, sicherheitsfrage, sicherheitsantwort, status, angemeldetBleiben);
                 MessageBox.Show("Registrierung erfolgreich!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _loginBildschirm.Show();
                 this.Close();
             }
-            else
-            {
-
-            }
-
         }
 
-        public bool NEUERBENUTZER()
+
+        public bool IstNeuerBenutzer()
         {
-            string vStrConnection = "Server=localhost; port=3169 ; user id=postgres ; password=Passwort1!; Database=Datenbank;";
             using (var conn = new NpgsqlConnection(vStrConnection))
             {
                 conn.Open();
-                using (var cmd = new NpgsqlCommand("SELECT COUNT(*) from Benutzertabelle WHERE benutzername = @Benutzername AND email = @Email", conn))
+                bool benutzerExistiert = false;
+
+                using (var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM Benutzertabelle WHERE benutzername = @Benutzername OR email = @Email", conn))
                 {
                     cmd.Parameters.AddWithValue("@Benutzername", TextboxBenutzername.Text);
                     cmd.Parameters.AddWithValue("@Email", TextboxEmail.Text);
-
-
-                    long Benutzerexistiert = Convert.ToInt64(cmd.ExecuteScalar());
-                    if (Benutzerexistiert > 0)
-                    {
-                        MessageBox.Show("Email und/oder Benutzername bereits vergeben!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return false;
-                    }
+                    benutzerExistiert = Convert.ToInt64(cmd.ExecuteScalar()) > 0;
                 }
 
-
-                using (var cmd = new NpgsqlCommand("SELECT COUNT(*) from Benutzertabelle WHERE email = @Email", conn))
+                if (benutzerExistiert)
                 {
-                    cmd.Parameters.AddWithValue("@Email", TextboxEmail.Text);
-                    long Benutzerexistiert = Convert.ToInt64(cmd.ExecuteScalar());
-                    if (Benutzerexistiert > 0)
-                    {
-                        MessageBox.Show("Email bereits vergeben!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return false;
-                    }
+                    MessageBox.Show("Email und/oder Benutzername bereits vergeben!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
                 }
 
-                using (var cmd = new NpgsqlCommand("SELECT COUNT(*) from Benutzertabelle WHERE benutzername = @Benutzername", conn))
-                {
-                    cmd.Parameters.AddWithValue("@Benutzername", TextboxBenutzername.Text);
-                    long Benutzerexistiert = Convert.ToInt64(cmd.ExecuteScalar());
-                    if (Benutzerexistiert > 0)
-                    {
-                        MessageBox.Show("Benutzername bereits vergeben!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return false;
-                    }
-                }
                 return true;
             }
         }
+               
+
          private string HashPasswort(string passwort)
          {
             using (SHA256 sha256 = SHA256.Create())
@@ -257,69 +241,72 @@ namespace Login.Forms
                 return builder.ToString();
             }
         }
+
+
         public void InsertData(string vorname, string nachname, string email, string benutzername, string passwort, string sicherheitsfrage, string sicherheitsantwort, string status, bool angemeldetbleiben)
         {
             string passwortHash = HashPasswort(passwort);
             using (NpgsqlConnection vCon = new NpgsqlConnection(vStrConnection))
-            {
-                try
+            {               
+                vCon.Open();
+                string sql = @"INSERT INTO BenutzerTabelle (name, vorname, email, benutzername, passworthash, sicherheitsfrage, sicherheitsantwort, status, angemeldetbleiben) 
+                       VALUES (@name, @vorname, @email, @benutzername, @passworthash, @sicherheitsfrage, @sicherheitsantwort, @status, @angemeldetbleiben)";
+                using (NpgsqlCommand vCmd = new NpgsqlCommand(sql, vCon))
                 {
-                    vCon.Open();
-                    string sql = @"INSERT INTO BenutzerTabelle (name, vorname, email, benutzername, passworthash, sicherheitsfrage, sicherheitsantwort, status, angemeldetbleiben) 
-                           VALUES (@name, @vorname, @email, @benutzername, @passworthash, @sicherheitsfrage, @sicherheitsantwort, @status, @angemeldetbleiben)";
-                    using (NpgsqlCommand vCmd = new NpgsqlCommand(sql, vCon))
-                    {
-                        vCmd.Parameters.AddWithValue("@name", nachname);
-                        vCmd.Parameters.AddWithValue("@vorname", vorname);
-                        vCmd.Parameters.AddWithValue("@email", email);
-                        vCmd.Parameters.AddWithValue("@benutzername", benutzername);
-                        vCmd.Parameters.AddWithValue("@passworthash", passwortHash);
-                        vCmd.Parameters.AddWithValue("@sicherheitsfrage", sicherheitsfrage);
-                        vCmd.Parameters.AddWithValue("@sicherheitsantwort", sicherheitsantwort);
-                        vCmd.Parameters.AddWithValue("@status", status);
-                        vCmd.Parameters.AddWithValue("@angemeldetbleiben", angemeldetbleiben);
-
-                        vCmd.ExecuteNonQuery();
-                        Console.WriteLine("Benutzer erfolgreich hinzugefügt.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("An error occurred: " + ex.Message);
-                    throw;
-                }
+                    vCmd.Parameters.AddWithValue("@name", nachname);
+                    vCmd.Parameters.AddWithValue("@vorname", vorname);
+                    vCmd.Parameters.AddWithValue("@email", email);
+                    vCmd.Parameters.AddWithValue("@benutzername", benutzername);
+                    vCmd.Parameters.AddWithValue("@passworthash", passwortHash);
+                    vCmd.Parameters.AddWithValue("@sicherheitsfrage", sicherheitsfrage);
+                    vCmd.Parameters.AddWithValue("@sicherheitsantwort", sicherheitsantwort);
+                    vCmd.Parameters.AddWithValue("@status", status);
+                    vCmd.Parameters.AddWithValue("@angemeldetbleiben", angemeldetbleiben);
+                    vCmd.ExecuteNonQuery();
+                }              
             }
         }
+
+
         private void PictureboxFragezeichen_MouseHover(object sender, EventArgs e)
         {
             LabelSicherheitsfrageGrund.Visible = true;
             ButtonFragezeichen.BackColor = Farben.Illusion;
         }
+
+
         private void PictureboxFragezeichen_MouseLeave(object sender, EventArgs e)
         {
             LabelSicherheitsfrageGrund.Visible = false;
             ButtonFragezeichen.BackColor = Farben.Iron;
         }
+
+
         private void ButtonZurückR_Click(object sender, EventArgs e)
         {
             this.Hide();
             _loginBildschirm.Show();
         }
 
+
         private void ButtonJetztRegistrieren_MouseHover(object sender, EventArgs e)
         {
             ButtonJetztRegistrieren.BackColor = Farben.DarkSurfie;
         }
+
 
         private void ButtonJetztRegistrieren_MouseLeave(object sender, EventArgs e)
         {
             ButtonJetztRegistrieren.BackColor = Farben.Surfie;
         }
 
+
         private void ButtonJetztRegistrieren_MouseDown(object sender, MouseEventArgs e)
         {
             ButtonJetztRegistrieren.BackColor = Farben.BlueShadow;
         }
+
+
         private void Textbox_MouseHover(object sender, EventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -329,6 +316,8 @@ namespace Login.Forms
 
             }
         }
+
+
         private void Textbox_MouseLeave(object sender, EventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -338,10 +327,13 @@ namespace Login.Forms
             }
         }
 
+
+
         private void ButtonZurückR_MouseHover(object sender, EventArgs e)
         {
             ButtonZurückR.BackColor = Farben.Illusion;
         }
+
 
         private void ButtonZurückR_MouseLeave(object sender, EventArgs e)
         {

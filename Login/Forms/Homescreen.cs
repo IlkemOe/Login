@@ -1,16 +1,9 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using Login.Forms;
 
 namespace Login
@@ -22,19 +15,36 @@ namespace Login
         private string _status;
         private bool _angemeldetBleiben;
         private Registrierung _registrierung;
+        string vStrConnection = "Server=localhost; port=3169 ; user id=postgres ; password=Passwort1!; Database=Datenbank;";
+
+
+
         public Homescreen(string benutzernameOderEmail, string status, bool angemeldetBleiben)
         {
+            //Hintergrund
             this.BackColor = Farben.ArcticWhite;
             InitializeComponent();
+
+            //Anbindungen 
             _benutzername = benutzernameOderEmail;
             _status = status;
-            LabelBenutzername.Text = $"Herzlich Willkommen, {_benutzername}!";
-            LabelStatus.Text = $"Status: {_status}";
             _angemeldetBleiben = angemeldetBleiben;
             _registrierung = new Registrierung();
-            dg.Visible = false;
-            dg.ReadOnly = false;
-            //Farben
+
+            //Willkommensnachricht
+            LabelBenutzername.Text = $"Herzlich Willkommen, {_benutzername}!";
+            LabelStatus.Text = $"Status: {_status}";
+
+
+            setzeFarben();
+
+            TimerUhrzeit.Tick += TimerUhrzeit_Tick;
+        }
+
+
+        //Farben
+        private void setzeFarben()
+        {
             LabelBenutzername.ForeColor = Farben.DeepSky;
             LabelStatus.ForeColor = Farben.DeepSky;
             LabelAnmeldeNachricht.ForeColor = Farben.DeepSky;
@@ -45,20 +55,10 @@ namespace Login
             ButtonBenutzerliste.BackColor = Farben.Surfie;
             ButtonSpeichern.BackColor = Farben.Surfie;
             ButtonNeu.ForeColor = Farben.Surfie;
-
         }
 
-        string vStrConnection = "Server=localhost; port=3169 ; user id=postgres ; password=Passwort1!; Database=Datenbank;";
 
-        private void connection()
-        {
-            NpgsqlConnection vCon = new NpgsqlConnection(vStrConnection);
-            if (vCon.State == ConnectionState.Closed)
-            {
-                vCon.Open();
-            }
-        }
-
+        //Abrufen aus der Datenbank
         public DataTable getdata(string sql)
         {
             DataTable dt = new DataTable();
@@ -83,6 +83,8 @@ namespace Login
             return dt;
         }
 
+
+        //Ausloggen und angemeldet Bleiben auf false
         private void ButtonLogout_Click(object sender, EventArgs e)
         {
             string email = _benutzername;
@@ -98,46 +100,47 @@ namespace Login
 
         }
 
+
+        //Schließen der Anwendung
         private void Homescreen_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
 
+
+        //Homescreen
         private void Homescreen_Load(object sender, EventArgs e)
         {
-
             TimerUhrzeit.Start();
             LabelUhrzeit.Text = DateTime.Now.ToLongTimeString();
             LabelDatum.Text = DateTime.Now.ToLongDateString();
-            Console.WriteLine("Homescreen_Load aufgerufen");
-            Console.WriteLine($"Benutzername: {_benutzername}, Status: {_status}");
 
             if (_status == "Admin")
             {
                 ButtonBenutzerliste.Visible = true;
             }
-
         }
 
+        //Uhrzeit
         private void TimerUhrzeit_Tick(object sender, EventArgs e)
         {
-            LabelUhrzeit.Text = DateTime.Now.ToLongTimeString();
-            TimerUhrzeit.Start();
+            LabelUhrzeit.Text = DateTime.Now.ToLongTimeString();            
         }
 
+
+        //Benutzerliste abrufen
         private void ButtonBenutzerliste_Click(object sender, EventArgs e)
         {
             if (_status == "Admin")
             {
+                DataTable dt = getdata("SELECT * FROM benutzerTabelle;");
+                dg.DataSource = dt;
                 dg.Visible = true;
-                ButtonSpeichern.Visible = true;
-                ButtonBenutzerliste.Visible = false;
-                DataTable dtgetdata = getdata("SELECT * FROM benutzerTabelle;");
-                dg.DataSource = dtgetdata;
                 dg.ReadOnly = false;
                 dg.AllowUserToAddRows = true;
                 dg.AllowUserToDeleteRows = true;
                 dg.EditMode = DataGridViewEditMode.EditOnEnter;
+                ButtonSpeichern.Visible = true;
                 ButtonBenutzerliste.Visible = false;
                 ButtonNeu.Visible = true;
                 ButtonBearbeiten.Visible = true;
@@ -150,12 +153,18 @@ namespace Login
             }
 
         }
+
+
+        //Aktualisieren der Datenbank
         public void ButtonSpeichern_Click(object sender, EventArgs e)
         {
 
             DatenBankAktualisieren();
 
         }
+
+
+        //Datenbank Update
         public void UpdateDatabase(DataTable dt)
         {
             using (NpgsqlConnection vCon = new NpgsqlConnection(vStrConnection))
@@ -249,6 +258,8 @@ namespace Login
             }
         }
 
+
+        //Hier wird Aktualisiert
         public void DatenBankAktualisieren()
         {
             DataTable dt = (DataTable)dg.DataSource;
@@ -257,6 +268,9 @@ namespace Login
             dg.DataSource = dtgetdata;
             dg.ClearSelection();
         }
+
+
+        //Neuer Benutzer-Form
         private void ButtonNeu_Click(object sender, EventArgs e)
         {
             NeuenBenutzerHinzufügen neuerBenutzer = new NeuenBenutzerHinzufügen();
@@ -265,6 +279,8 @@ namespace Login
                 DatenBankAktualisieren();
         }
 
+
+        //Löschen Methode
         private void LöscheAusgewählteReihe()
         {
             if (dg.SelectedRows.Count > 0)
@@ -325,11 +341,15 @@ namespace Login
             }
         }
     
+
+        //ButtonLöschen
         private void ButtonLöschen_Click(object sender, EventArgs e)
         {
             LöscheAusgewählteReihe();
         }
 
+
+        //Bearbeitung von Benutzern
         private void ButtonBearbeiten_Click(object sender, EventArgs e)
         {
             if (dg.SelectedRows.Count > 0)
@@ -338,9 +358,7 @@ namespace Login
                 BearbeitenBenutzer bearbeitenBenutzer = new BearbeitenBenutzer(email, this);
                 bearbeitenBenutzer.ShowDialog();
                 // Aktualisieren Sie die DataGridView-Daten nach dem Schließen des Bearbeiten-Fensters
-                DataTable dtgetdata = getdata("SELECT * FROM benutzerTabelle;");
-                dg.DataSource = dtgetdata;
-                dg.ClearSelection();
+                DatenBankAktualisieren();
             }
             else
             {
