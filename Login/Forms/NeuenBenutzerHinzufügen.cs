@@ -179,7 +179,8 @@ namespace Login.Forms
             {
                 InsertData(vorname, nachname, email, benutzername, passwort, sicherheitsfrage, sicherheitsantwort, status, angemeldetBleiben);
                 MessageBox.Show("Registrierung erfolgreich!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Hide();
+                this.DialogResult = DialogResult.OK;
+                Hide();
             }
 
         }

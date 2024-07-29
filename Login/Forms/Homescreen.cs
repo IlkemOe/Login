@@ -150,18 +150,13 @@ namespace Login
             }
 
         }
-        private void ButtonSpeichern_Click(object sender, EventArgs e)
+        public void ButtonSpeichern_Click(object sender, EventArgs e)
         {
 
-            // Beispiel: Speichern der geänderten Daten im DataGridView zurück in die Datenbank
-            DataTable dt = (DataTable)dg.DataSource;
-            UpdateDatabase(dt); // Implementieren Sie diese Methode entsprechend
-            DataTable dtgetdata = getdata("SELECT * FROM benutzerTabelle;");
-            dg.DataSource = dtgetdata;
-            dg.ClearSelection();
+            DatenBankAktualisieren();
 
         }
-        private void UpdateDatabase(DataTable dt)
+        public void UpdateDatabase(DataTable dt)
         {
             using (NpgsqlConnection vCon = new NpgsqlConnection(vStrConnection))
             {
@@ -254,10 +249,20 @@ namespace Login
             }
         }
 
+        public void DatenBankAktualisieren()
+        {
+            DataTable dt = (DataTable)dg.DataSource;
+            UpdateDatabase(dt);
+            DataTable dtgetdata = getdata("SELECT * FROM benutzerTabelle;");
+            dg.DataSource = dtgetdata;
+            dg.ClearSelection();
+        }
         private void ButtonNeu_Click(object sender, EventArgs e)
         {
             NeuenBenutzerHinzufügen neuerBenutzer = new NeuenBenutzerHinzufügen();
-            neuerBenutzer.Show();
+            DialogResult result = neuerBenutzer.ShowDialog();
+            if (result == DialogResult.OK)
+                DatenBankAktualisieren();
         }
 
         private void LöscheAusgewählteReihe()

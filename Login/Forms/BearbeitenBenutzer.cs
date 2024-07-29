@@ -21,6 +21,8 @@ namespace Login.Forms
         public BearbeitenBenutzer(string email, Homescreen homescreen)
         {
             InitializeComponent();
+            TextboxPasswort.UseSystemPasswordChar = true;
+            TextboxPasswortWiederholen.UseSystemPasswordChar = true;
             _email = email;
             _homescreen = homescreen;
             LoadUserData();
