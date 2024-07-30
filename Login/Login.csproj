@@ -240,5 +240,8 @@
   <ItemGroup>
     <None Include="Resources\Löschen.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\AugeZu.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

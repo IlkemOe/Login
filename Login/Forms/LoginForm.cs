@@ -21,6 +21,7 @@ namespace Login
         {
             //Hintergrund
             this.BackColor = Farben.IceWhite;
+
             InitializeComponent();
             _registrierung = new Registrierung();
             dbService = new DatenbankService();
@@ -85,18 +86,10 @@ namespace Login
         //PasswortSichtbarkeit
         private void ButtonPasswortSicherheit_Click(object sender, EventArgs e)
         {
-            if (TextfeldPasswort.UseSystemPasswordChar == true)
-            {
-
-                TextfeldPasswort.UseSystemPasswordChar = false;
-                ButtonPasswortSicherheit.Image = new Bitmap(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\Resources\AugeZu.png"));
-            }
-            else
-            {
-
-                TextfeldPasswort.UseSystemPasswordChar = true;
-                ButtonPasswortSicherheit.Image = new Bitmap(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\Resources\Auge.png"));
-            }
+            TextfeldPasswort.UseSystemPasswordChar = !TextfeldPasswort.UseSystemPasswordChar;
+            ButtonPasswortSicherheit.Image = TextfeldPasswort.UseSystemPasswordChar
+                ? Properties.Resources.AugeZu
+                : Properties.Resources.Auge;
         }
 
 
